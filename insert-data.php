@@ -1,12 +1,12 @@
 <?php
 
-if(isset($_GET["value"])) {
-   $value = $_GET["value"]; // get value from HTTP GET
+if(isset($_GET["temperature"])) {
+   $temperature = $_GET["temperature"]; // get temperature value from HTTP GET
 
    $servername = "eu-cdbr-west-02.cleardb.net";
    $username = "b8100c5581c24b";
    $password = "2ab80845";
-   $dbname = "test_table";
+   $dbname = "db_arduino";
 
    // Create connection
    $conn = new mysqli($servername, $username, $password, $dbname);
@@ -15,7 +15,7 @@ if(isset($_GET["value"])) {
       die("Connection failed: " . $conn->connect_error);
    }
 
-   $sql = "INSERT INTO test_table (temp_value) VALUES ($value)";
+   $sql = "INSERT INTO tbl_temp (temp_value) VALUES ($temperature)";
 
    if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
@@ -28,3 +28,4 @@ if(isset($_GET["value"])) {
    echo "temperature is not set";
 }
 ?>
+
