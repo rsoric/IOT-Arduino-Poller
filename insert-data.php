@@ -6,7 +6,7 @@ if(isset($_GET["temperature"])) {
    $servername = "eu-cdbr-west-02.cleardb.net";
    $username = "b8100c5581c24b";
    $password = "2ab80845";
-   $dbname = "db_arduino";
+   $dbname = "heroku_526e4c652212ab8";
 
    // Create connection
    $conn = new mysqli($servername, $username, $password, $dbname);
