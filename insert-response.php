@@ -1,6 +1,6 @@
 <?php
 
-if(isset($_GET["q1"] && isset($_GET["q2"] && isset($_GET["q3"])) {
+if(isset($_GET["q1"] & isset($_GET["q2"] & isset($_GET["q3"])) {
    //$temperature = $_GET["temperature"]; // get temperature value from HTTP GET
    $q1 = $_GET["q1"];
    $q2 = $_GET["q2"];
