@@ -1,7 +1,10 @@
 <?php
 
-if(isset($_GET["temperature"])) {
-   $temperature = $_GET["temperature"]; // get temperature value from HTTP GET
+if(isset($_GET["q1"] && isset($_GET["q2"] && isset($_GET["q3"])) {
+   //$temperature = $_GET["temperature"]; // get temperature value from HTTP GET
+   $q1 = $_GET["q1"];
+   $q2 = $_GET["q2"];
+   $q3 = $_GET["q3"];
 
    $servername = "eu-cdbr-west-02.cleardb.net";
    $username = "b8100c5581c24b";
@@ -15,7 +18,7 @@ if(isset($_GET["temperature"])) {
       die("Connection failed: " . $conn->connect_error);
    }
 
-   $sql = "INSERT INTO tbl_temp (temp_value) VALUES ($temperature)";
+   $sql = "INSERT INTO responses (q1, q2, q3) VALUES ($q1, $q2, $q3)";
 
    if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
@@ -25,7 +28,7 @@ if(isset($_GET["temperature"])) {
 
    $conn->close();
 } else {
-   echo "temperature is not set";
+   echo "Responses are not set";
 }
 ?>
 
