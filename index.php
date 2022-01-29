@@ -1,6 +1,11 @@
 <html>
  <head>
   <title>PHP Test</title>
+  <style>
+      table {
+  width: 100%;
+}
+  </style>
  </head>
  <body>
  <?php echo '<p>yo yo yo</p>'; 
