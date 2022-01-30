@@ -5,7 +5,7 @@ if(isset($_GET["q1"],$_GET["q2"],$_GET["q3"])) {
    $q1 = $_GET["q1"];
    $q2 = $_GET["q2"];
    $q3 = $_GET["q3"];
-   $timeOfPolling = date('Y-m-d H:i:s');
+   $timeOfPolling = date();
 
    $servername = "eu-cdbr-west-02.cleardb.net";
    $username = "b8100c5581c24b";
