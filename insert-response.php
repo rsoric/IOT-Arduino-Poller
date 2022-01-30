@@ -5,7 +5,8 @@ if(isset($_GET["q1"],$_GET["q2"],$_GET["q3"])) {
    $q1 = $_GET["q1"];
    $q2 = $_GET["q2"];
    $q3 = $_GET["q3"];
-
+   $date = date('Y-m-d H:i:s','1299762201428');
+   
    $servername = "eu-cdbr-west-02.cleardb.net";
    $username = "b8100c5581c24b";
    $password = "2ab80845";
@@ -18,7 +19,7 @@ if(isset($_GET["q1"],$_GET["q2"],$_GET["q3"])) {
       die("Connection failed: " . $conn->connect_error);
    }
 
-   $sql = "INSERT INTO responses (q1, q2, q3, timeOfPolling) VALUES ($q1, $q2, $q3,date('Y-m-d H:i:s'))";
+   $sql = "INSERT INTO responses (q1, q2, q3, timeOfPolling) VALUES ($q1, $q2, $q3,$date)";
 
    if ($conn->query($sql) === TRUE) {
       echo "New record created successfully";
