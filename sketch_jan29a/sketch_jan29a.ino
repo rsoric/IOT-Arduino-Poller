@@ -17,16 +17,14 @@ String question1 = "Hrana?";
 String question2 = "Cijena?";
 String question3 = "Usluga?";
 
-String reply1 = "Uzas";
-String reply2 = "Nije dobro";
-String reply3 = "OK";
-String reply4 = "Solidno";
-String reply5 = "Genijalno";
+String questions [] = {question1,question2,question3};
 
-int q1ValueToSend = 0;
-int q2ValueToSend = 0;
-int q3ValueToSend = 0;
+String replies1 [] = {"Uzas","Lose","OK","Dobro","Izvrsno"};
+String replies2 [] = {"Jako losa","Losa","OK","Dobra","Izvrsna"};
+String replies3 [] = {"Uzasna","Losa","OK","Dobra","Izvrsna"};
+String * replies [] = {replies1, replies2, replies3};
 
+int qValues [] = {0,0,0};
 
 const char* ssid     = STASSID;
 const char* password = STAPSK;
@@ -39,6 +37,8 @@ String HTTP_METHOD = "GET";
 
 
 RBD::Button button(12);
+RBD::Button buttonBack(14);
+
 
 void setup() {
   Serial.begin(115200);
@@ -72,54 +72,58 @@ void setup() {
 
 void loop() {
 
-lcd.setCursor(0,0);
-lcd.print(question1);
-while(true)
+pollQuestions(1);
+sendData(qValues);
+lcd.clear();
+lcd.home();
+lcd.print("Hvala!");
+delay(3599);
+
+}
+
+void pollQuestion(int qNumber)
 {
-  delay(50);
-  int q1Value = analogRead(A0);
+  lcd.clear();
+  lcd.setCursor(0,0);
+  lcd.print(questions[qNumber-1]);
+  int qValue = map(analogRead(A0), 14, 870, 1, 5);
   lcd.setCursor(0,1);
-  lcd.print(q1Value);
-  if(button.onPressed()) {
-    q1ValueToSend = q1Value; 
-    break;    
+  lcd.print(replies[qNumber-1][qValue-1]);
+  while(true)
+  {
+    delay(50);
+    if(qValue!= map(analogRead(A0), 14, 870, 1, 5))
+    {
+      lcd.clear();
+      lcd.setCursor(0,0);
+      lcd.print(questions[qNumber-1]);
+      
+      qValue = map(analogRead(A0), 14, 870, 1, 5);
+      lcd.setCursor(0,1);
+      lcd.print(replies[qNumber-1][qValue-1]);
+    }
+    if(button.onPressed()) {
+      qValues[qNumber-1] = qValue; 
+      break;    
+    }
+    if(buttonBack.onPressed()&&qNumber!=1) {
+      pollQuestions(qNumber-1);
+      break;    
+    }
   }
 }
 
-lcd.setCursor(0,0);
-lcd.print(question2);
-while(true)
+void pollQuestions(int startingQ)
 {
-  delay(50);
-  int q2Value = analogRead(A0);
-  lcd.setCursor(0,1);
-  lcd.print(q2Value);
-  if(button.onPressed()) {
-    q2ValueToSend = q2Value; 
-    break;    
-  }
+  int i = startingQ;
+  do
+  {
+    pollQuestion(i);
+    i++;
+  }while(i!=4);
 }
 
-lcd.setCursor(0,0);
-lcd.print(question3);
-while(true)
-{
-  delay(50);
-  int q3Value = analogRead(A0);
-  lcd.setCursor(0,1);
-  lcd.print(q3Value);
-  if(button.onPressed()) {
-    q3ValueToSend = q3Value; 
-    break;    
-  }
-}
-
-sendData(q1ValueToSend,q2ValueToSend,q3ValueToSend);
-
-
-}
-
-void sendData(int q1ValueToSend, int q2ValueToSend, int q3ValueToSend){
+void sendData(int * qValues){
   
   Serial.print("connecting to ");
   Serial.print(host);
@@ -139,9 +143,9 @@ void sendData(int q1ValueToSend, int q2ValueToSend, int q3ValueToSend){
   //String queryString = "?q1=29.1&q2=55&q3=2.525";
   if (client.connected()) {
     client.println(HTTP_METHOD + " " + PATH_NAME + 
-    "?q1="+String(q1ValueToSend)
-    +"&q2="+String(q2ValueToSend)
-    +"&q3="+String(q3ValueToSend) 
+    "?q1="+String(qValues[0])
+    +"&q2="+String(qValues[1])
+    +"&q3="+String(qValues[2]) 
     + " HTTP/1.1");
     client.println("Host: " + String(host));
     client.println("Connection: close");
