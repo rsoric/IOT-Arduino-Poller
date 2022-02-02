@@ -8,7 +8,7 @@
   </style>
  </head>
  <body>
- <?php echo '<p>yo yo yo</p>'; 
+ <?php echo '<p>yo yo yo EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEOOOOOOY</p>'; 
 
 
 $host = "eu-cdbr-west-02.cleardb.net";
