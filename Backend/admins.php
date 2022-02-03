@@ -9,6 +9,7 @@ class Admins
 
     public function __construct()
     {
+        echo "HERE ! <br>";
         $connStr = sprintf("mysql:host=%s;dbname=%s", DBConfig::serverName, DBConfig::dbName);
 
         try
