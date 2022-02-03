@@ -1,6 +1,6 @@
 <?php
 
-require_once "database_config.php";
+require_once 'database_config.php';
 
 class Admins
 {
@@ -9,7 +9,6 @@ class Admins
 
     public function __construct()
     {
-        print "hello";
         $connStr = sprintf("mysql:host=%s;dbname=%s", DBConfig::serverName, DBConfig::dbName);
 
         try

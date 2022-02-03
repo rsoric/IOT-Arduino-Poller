@@ -1,6 +1,7 @@
 <?php
-    include_once "admins.php";
-    include_once "sanitization.php";
+
+    include_once 'admins.php';
+    include_once 'sanitization.php';
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
