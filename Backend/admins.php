@@ -9,7 +9,7 @@ class Admins
 
     public function __construct()
     {
-        echo "HERE ! <br>";
+        print "hello";
         $connStr = sprintf("mysql:host=%s;dbname=%s", DBConfig::serverName, DBConfig::dbName);
 
         try
@@ -97,4 +97,4 @@ class Admins
     }
   }
   
-  $_admins = new Admins();
+  $_admins = new Admins()
