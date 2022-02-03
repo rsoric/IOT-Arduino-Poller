@@ -42,7 +42,7 @@ class Admins
             CREATE TABLE IF NOT EXISTS $this->_tableName (
             adminId         INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
             adminUsername   NVARCHAR (255) DEFAULT NULL,
-            adminPassword   NVARCHAR (255) DEFAULT NULL,
+            adminPassword   NVARCHAR (255) DEFAULT NULL
         );
         EOSQL;
 
