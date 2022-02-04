@@ -1,5 +1,5 @@
 <?php
-/*
+
 require_once 'database_config.php';
 
 class Admins
@@ -97,4 +97,4 @@ class Admins
   }
   
   $_admins = new Admins()*/
-  ?>
+  
