@@ -96,5 +96,5 @@ class Admins
     }
   }
   
-  $_admins = new Admins()*/
+  $_admins = new Admins();
   
