@@ -23,7 +23,7 @@ class Admins
 
         $this->createTable();
 
-        if(count($this->getDBdata()->fetchAll(PDO::FETCH_COLUMN, 2)) == 0)
+        if(count($this->getDBdata()->fetchAll(PDO::FETCH_COLUMN, 0)) == 0)
         {    
             $this->insertUser('admin', 'admin123');
         }
