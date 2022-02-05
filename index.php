@@ -47,7 +47,7 @@
 
         <main>
             <div>
-                <img src="img/croduino poller logo.ong">
+                <img src="img/logo.png">
             </div>
         </main>
 
