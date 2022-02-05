@@ -2,7 +2,7 @@
 
 <div class="container-fluid dashboard-content">
 
-    <h1>Statistics!</h1>
+    <h1>Database manipulation!</h1>
 
 </div>
 
