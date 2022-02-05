@@ -14,6 +14,7 @@ ini_set('display_errors', 'on');
 
         while ($admin = $admins->fetch())
         {
+            echo "<h1>" .  $admin['adminUsername'] . "</h1>"
             if($admin['adminUsername'] == $adminUsername && $admin['adminPassword'] == $adminPassword) 
             {
                 setcookie("Admin", $adminUsername, time()+600, '/');

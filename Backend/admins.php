@@ -21,6 +21,7 @@ class Admins
         catch(PDOException $e)
         {
             echo $e->getMessage();
+            echo "Not Connected!";
         }
 
         $this->createTable();
@@ -98,5 +99,7 @@ class Admins
     }
   }
   
-  $_admins = new Admins();
+
+  
+ $_admins = new Admins();
   
