@@ -40,7 +40,7 @@ class Admins
 
     public function createTable($name = 'admins')
     {
-        if(tableExists($this->_connection, $name) == TRUE)
+        if($this->tableExists($this->_connection, $name) == TRUE)
         {
             $this->_tableName = $name;
 
