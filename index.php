@@ -46,7 +46,7 @@
         </header>
 
         <main>
-            <div>
+            <div style="width:50%;">
                 <img src="img/logo.png">
             </div>
         </main>
