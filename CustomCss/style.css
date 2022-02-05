@@ -1,0 +1,164 @@
+body{
+    background-color: #F8F4F1!important;
+  }
+  
+  *{
+    font-family: 'Courier New', monospace;
+    color:#2e282a;
+  }
+  .cover-container {
+    max-width: 64em;
+  }
+  
+  .nav-masthead .nav-link {
+    padding: .40rem 1rem;
+    font-weight: 700;
+    color:#2e282a;
+    background-color: transparent;
+    border-bottom: .25rem solid transparent;
+    font-size: 18px;
+  }
+  
+  .nav-masthead .nav-link:hover,
+  .nav-masthead .nav-link:focus {
+    border-bottom-color: rgba(255, 255, 255, .25);
+  }
+  
+  .nav-masthead .nav-link + .nav-link {
+    margin-left: 1rem;
+  }
+  
+  .nav-masthead .active {
+    color: #fff;
+    border-bottom-color: #fff;
+  }
+  
+  .menu-icon{
+    max-width: 9em;
+    
+  }
+  
+  #icon-about-wrapper{
+    transform: rotateY(360deg);
+  }
+  
+  .home-menu{
+    margin-top:40px;
+  }
+  
+  .home-menu-item{
+    margin-top:25px;
+  }
+  
+  .nav-current{
+    color: #e94f37 !important;
+  }
+  
+  .home-menu-item h3{
+    margin-top:15px;
+  }
+  
+  .home-menu-item:hover h3{
+    color: #e94f37;
+  }
+  
+  .home-menu-item h3:hover{
+    color: #e94f37;
+  }
+  
+  a:link {
+    text-decoration: none;
+  }
+  
+  .catalogue-cover{
+    max-height: 10rem;
+  }
+  
+  
+  
+  .form-floating{
+    margin:30px;
+  }
+  
+  .login-button{
+    max-width: 15rem ;
+    background-color: #e94f37;
+    border: none;
+  }
+  
+  .login-button:hover{
+    background-color: #ec7866;
+  }
+  
+  #sidebar-logo{
+    max-width:18rem;
+    padding:30px;
+  }
+  
+  
+  
+  @media (min-width: 768px) {
+        
+    
+      #page-content-wrapper {
+        min-width: 0;
+        width: 100%;
+      margin-top:40px;
+      margin-left:40px;
+      
+      }
+    
+      body.sb-sidenav-toggled #wrapper #sidebar-wrapper {
+        margin-left: -15rem;
+      }
+  
+      .mobile-admin-navbar{
+          display:none;
+      }
+  
+      .dashboard-content{
+          margin-top:40px;
+  
+      }
+  
+  
+  
+    }
+  
+    @media (max-width: 768px) {
+    #sidebar-wrapper{
+      display:none;
+      
+    }
+  
+    #wrapper{
+      min-width:100vw;
+    }
+    }
+  
+    #sidebar-wrapper{
+      margin-top:40px;
+      margin-left:40px;
+      box-shadow: 2px 2px 4px 4px #00000012;
+    }
+  
+    #mobile-admin-navbar{
+      width:100%;
+    }
+  
+  #page-content-wrapper{
+    width:100%;
+  }
+  
+  #wrapper{
+    min-height:95.7vh;
+  }
+  
+  .navbar-toggler{
+    margin:auto;
+  }
+  
+  .mobile-menu-logo{
+    width:100vw;
+  }
+  
