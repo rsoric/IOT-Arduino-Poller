@@ -36,20 +36,7 @@ class Admins
         $this->_connection = null;
     }
 
-    public function tableExists($pdo, $table) {
-
-        // Try a select statement against the table
-        // Run it in try/catch in case PDO is in ERRMODE_EXCEPTION.
-        try {
-            $result = $pdo->query("SELECT 1 FROM $table LIMIT 1");
-        } catch (Exception $e) {
-            // We got an exception == table not found
-            return FALSE;
-        }
     
-        // Result is either boolean FALSE (no table found) or PDOStatement Object (table found)
-        return $result !== FALSE;
-    }
 
     public function createTable($name = 'admins')
     {
@@ -69,6 +56,8 @@ class Admins
             debug_to_console("Table Created");
         }
     }
+
+
 
 
     public function insertUser($adminUsername, $adminPassword)
@@ -113,6 +102,21 @@ class Admins
         {
             echo $e->getMessage();
         }
+    }
+
+    public function tableExists($pdo, $table) {
+
+        // Try a select statement against the table
+        // Run it in try/catch in case PDO is in ERRMODE_EXCEPTION.
+        try {
+            $result = $pdo->query("SELECT 1 FROM $table LIMIT 1");
+        } catch (Exception $e) {
+            // We got an exception == table not found
+            return FALSE;
+        }
+    
+        // Result is either boolean FALSE (no table found) or PDOStatement Object (table found)
+        return $result !== FALSE;
     }
   }
   
