@@ -7,10 +7,6 @@ ini_set('display_errors', 'on');
     include_once 'sanitization.php';
 
     $admins = $_admins->getDBdata();
-    while ($admin = $admins->fetch())
-        {
-            debug_to_console($admin);
-        }
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
@@ -20,7 +16,7 @@ ini_set('display_errors', 'on');
 
         while ($admin = $admins->fetch())
         {
-            echo "<h1>" .  $admin['adminUsername'] . "</h1>";
+            debug_to_console($admin);
             if($admin['adminUsername'] == $adminUsername && $admin['adminPassword'] == $adminPassword) 
             {
                 setcookie("Admin", $adminUsername, time()+600, '/');
