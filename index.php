@@ -46,8 +46,8 @@
         </header>
 
         <main>
-            <div style="width:50%;">
-                <img src="img/logo.png">
+            <div>
+                <img src="img/logo.png" class="img-responsive">
             </div>
         </main>
 
