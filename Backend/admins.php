@@ -10,7 +10,6 @@ class Admins
 
     public function __construct()
     {
-        debug_to_console("Test");
         $connStr = sprintf("mysql:host=%s;dbname=%s", DBConfig::serverName, DBConfig::dbName);
 
         try
@@ -37,20 +36,38 @@ class Admins
         $this->_connection = null;
     }
 
+    function tableExists($pdo, $table) {
+
+        // Try a select statement against the table
+        // Run it in try/catch in case PDO is in ERRMODE_EXCEPTION.
+        try {
+            $result = $pdo->query("SELECT 1 FROM $table LIMIT 1");
+        } catch (Exception $e) {
+            // We got an exception == table not found
+            return FALSE;
+        }
+    
+        // Result is either boolean FALSE (no table found) or PDOStatement Object (table found)
+        return $result !== FALSE;
+    }
+
     public function createTable($name = 'admins')
     {
-        $this->_tableName = $name;
+        if(tableExists($this->_connection, $name) == TRUE)
+        {
+            $this->_tableName = $name;
 
-        $sql = <<<EOSQL
-            CREATE TABLE IF NOT EXISTS $this->_tableName (
-            adminId         INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-            adminUsername   NVARCHAR (255) DEFAULT NULL,
-            adminPassword   NVARCHAR (255) DEFAULT NULL
-        );
-        EOSQL;
+            $sql = <<<EOSQL
+                CREATE TABLE IF NOT EXISTS $this->_tableName (
+                adminId         INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+                adminUsername   NVARCHAR (255) DEFAULT NULL,
+                adminPassword   NVARCHAR (255) DEFAULT NULL
+            );
+            EOSQL;
 
-        $this->_connection->exec($sql);
-        echo "Table created ! <br>";
+            $this->_connection->exec($sql);
+            debug_to_console("Table Created");
+        }
     }
 
 
@@ -100,6 +117,6 @@ class Admins
   }
   
 
-  
+
  $_admins = new Admins();
   
