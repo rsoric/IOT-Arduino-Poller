@@ -110,7 +110,9 @@ class Admins
         // Run it in try/catch in case PDO is in ERRMODE_EXCEPTION.
         try {
             $result = $pdo->query("SELECT 1 FROM $table LIMIT 1");
+            debug_to_console($result);
         } catch (Exception $e) {
+            debug_to_console($result);
             // We got an exception == table not found
             return FALSE;
         }
