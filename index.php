@@ -12,7 +12,6 @@
     <!-- Bootstrap core CSS -->
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="Bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="Bootstrap/js/rotateImage.js"></script>
 
     <style>
     .bd-placeholder-img {
