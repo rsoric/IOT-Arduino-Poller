@@ -1,4 +1,4 @@
-<?php include "dashboard-header.php"; ?>
+<?php include "dashboard_header.php"; ?>
 
 <div class="container-fluid dashboard-content">
 
@@ -7,4 +7,4 @@
 
 </div>
 
-<?php include "dashboard-footer.php"; ?>
+<?php include "dashboard_footer.php"; ?>
