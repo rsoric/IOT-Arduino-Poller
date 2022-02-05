@@ -36,7 +36,7 @@ class Admins
         $this->_connection = null;
     }
 
-    function tableExists($pdo, $table) {
+    public function tableExists($pdo, $table) {
 
         // Try a select statement against the table
         // Run it in try/catch in case PDO is in ERRMODE_EXCEPTION.
