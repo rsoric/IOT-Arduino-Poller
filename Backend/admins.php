@@ -15,12 +15,12 @@ class Admins
         try
         {
             $this->_connection = new PDO($connStr, DBConfig::dbUsername, DBConfig::dbPassword);
-            echo "Connected!";
+            debug_to_console("Connected");
         }
         catch(PDOException $e)
         {
             echo $e->getMessage();
-            echo "Not Connected!";
+            debug_to_console("Not connected");
         }
 
         $this->createTable();
