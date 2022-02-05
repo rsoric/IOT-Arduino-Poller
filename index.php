@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Štrafasti risevi - Robert Sorić, David Hodak, Damir Stipančić">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>ARDUINO POLLER</title>
+    <title>Croduino Poller</title>
 
     <!-- Bootstrap core CSS -->
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@
         </main>
 
         <footer class="mt-auto">
-            <p>&copy; Copyright 2021, Štrafasti Ris Web Development Agency</p>
+            <p>&copy; Copyright 2022, Štrafasti Ris Smart Devices & Intelligent Systems co.</p>
         </footer>
     </div>
 

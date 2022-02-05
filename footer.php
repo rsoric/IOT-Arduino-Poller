@@ -1,5 +1,5 @@
 <footer class="mt-auto">
-    <p>&copy; Copyright 2021, Štrafasti Ris Web Development Agency</p>
+<p>&copy; Copyright 2022, Štrafasti Ris Smart Devices & Intelligent Systems co.</p>
 </footer>
 </div>
 

@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="Štrafasti risevi - Robert Sorić, David Hodak, Damir Stipančić">
     <meta name="generator" content="Hugo 0.88.1">
-    <title>ARDUINO POLLER</title>
+    <title>Croduino poller</title>
 
     <!-- Bootstrap core CSS -->
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
