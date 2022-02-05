@@ -6,6 +6,7 @@ ini_set('display_errors', 'on');
     include_once 'admins.php';
     include_once 'sanitization.php';
 
+    $admins = $_admins->getDBdata();
     while ($admin = $admins->fetch())
         {
             debug_to_console($admin);
