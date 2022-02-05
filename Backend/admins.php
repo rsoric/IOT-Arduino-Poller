@@ -10,6 +10,7 @@ class Admins
 
     public function __construct()
     {
+        
         $connStr = sprintf("mysql:host=%s;dbname=%s", DBConfig::serverName, DBConfig::dbName);
 
         try
@@ -19,8 +20,7 @@ class Admins
         }
         catch(PDOException $e)
         {
-            echo $e->getMessage();
-            debug_to_console("Not connected");
+            debug_to_console("Not Connected");
         }
 
         $this->createTable();
@@ -36,28 +36,20 @@ class Admins
         $this->_connection = null;
     }
 
-    
-
     public function createTable($name = 'admins')
     {
-        if($this->tableExists($this->_connection, $name) == FALSE)
-        {
-            $this->_tableName = $name;
+        $this->_tableName = $name;
 
-            $sql = <<<EOSQL
-                CREATE TABLE IF NOT EXISTS $this->_tableName (
-                adminId         INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-                adminUsername   NVARCHAR (255) DEFAULT NULL,
-                adminPassword   NVARCHAR (255) DEFAULT NULL
-            );
-            EOSQL;
+        $sql = <<<EOSQL
+            CREATE TABLE IF NOT EXISTS $this->_tableName (
+            adminId         INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+            adminUsername   NVARCHAR (255) DEFAULT NULL,
+            adminPassword   NVARCHAR (255) DEFAULT NULL
+        );
+        EOSQL;
 
-            $this->_connection->exec($sql);
-            debug_to_console("Table Created");
-        }
+        $this->_connection->exec($sql);
     }
-
-
 
 
     public function insertUser($adminUsername, $adminPassword)
@@ -102,23 +94,6 @@ class Admins
         {
             echo $e->getMessage();
         }
-    }
-
-    public function tableExists($pdo, $table) {
-
-        // Try a select statement against the table
-        // Run it in try/catch in case PDO is in ERRMODE_EXCEPTION.
-        try {
-            $result = $pdo->query("SELECT 1 FROM $table LIMIT 1");
-            debug_to_console("POSTOJI");
-        } catch (Exception $e) {
-            debug_to_console(NE POSTOJI);
-            // We got an exception == table not found
-            return FALSE;
-        }
-    
-        // Result is either boolean FALSE (no table found) or PDOStatement Object (table found)
-        return $result !== FALSE;
     }
   }
   
