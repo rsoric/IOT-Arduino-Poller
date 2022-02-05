@@ -10,9 +10,8 @@
     <title>ARDUINO POLLER</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/rotateImage.js"></script>
+    <link href="css/Bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="js/Bootstrap.min.js"></script>
 
     <style>
     .bd-placeholder-img {
@@ -32,7 +31,7 @@
 
 
     <!-- Custom styles for this template -->
-    <link href="style.css" rel="stylesheet">
+    <link href="CustomCss/style.css" rel="stylesheet">
 
     <?php 
     $activePage = basename($_SERVER['PHP_SELF'], ".php");
