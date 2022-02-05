@@ -6,6 +6,11 @@ ini_set('display_errors', 'on');
     include_once 'admins.php';
     include_once 'sanitization.php';
 
+    while ($admin = $admins->fetch())
+        {
+            debug_to_console($admin);
+        }
+
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
         $adminUsername = sanitizeInput($_POST['adminUsername']);
