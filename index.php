@@ -47,7 +47,7 @@
 
         <main>
             <div>
-                <img src="img/logo.png" class="img-responsive">
+                <img src="img/logo.png" class="img-fluid">
             </div>
         </main>
 
