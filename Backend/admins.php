@@ -1,6 +1,7 @@
 <?php
 
 require_once 'database_config.php';
+require_once 'sanitization.php'
 
 class Admins
 {
