@@ -9,6 +9,7 @@ class Admins
 
     public function __construct()
     {
+        debug_to_console("Test");
         $connStr = sprintf("mysql:host=%s;dbname=%s", DBConfig::serverName, DBConfig::dbName);
 
         try
