@@ -10,8 +10,8 @@
     <title>ARDUINO POLLER</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="css/Bootstrap.min.css" rel="stylesheet">
-    <script type="text/javascript" src="js/Bootstrap.min.js"></script>
+    <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="Bootstrap/bootstrap.min.js"></script>
 
     <style>
     .bd-placeholder-img {
