@@ -36,7 +36,7 @@
                 <a href="dashboard.php"
                     class="admin-panel-nav-item list-group-item list-group-item-action list-group-item-light p-3"
                     data-pathname="/dashboard.php">Dashboard Home</a>
-                <a href="dashboard-releases.php"
+                <a href="dashboard_statistics.php"
                     class="admin-panel-nav-item list-group-item list-group-item-action list-group-item-light p-3"
                     data-pathname="/dashboard_statistics.php">Statistics</a>
                 <a href="Backend/logout.php"
