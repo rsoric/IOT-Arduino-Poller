@@ -45,6 +45,12 @@
             </div>
         </header>
 
+        <main>
+            <div>
+                <img src="img/croduino poller logo.ong">
+            </div>
+        </main>
+
         <footer class="mt-auto">
             <p>&copy; Copyright 2021, Štrafasti Ris Web Development Agency</p>
         </footer>
