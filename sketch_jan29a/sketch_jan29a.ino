@@ -3,14 +3,14 @@
 #include <ESP8266WiFi.h>
 
 #include <Wire.h> 
-#include <LiquidCrystal_I2C.h>
+#include <LCD_I2C.h>
 
 // Set the LCD address to 0x27 for a 16 chars and 2 line display
-LiquidCrystal_I2C lcd(0x27, 16, 2);
+LCD_I2C lcd(0x27, 16, 2);
 
 #ifndef STASSID
-#define STASSID "PAP"
-#define STAPSK  "pap13789"
+#define STASSID "Soric WiFi"
+#define STAPSK  "pitajrobija11"
 #endif
 
 String question1 = "Hrana?";
@@ -86,19 +86,19 @@ void pollQuestion(int qNumber)
   lcd.clear();
   lcd.setCursor(0,0);
   lcd.print(questions[qNumber-1]);
-  int qValue = map(analogRead(A0), 14, 870, 1, 5);
+  int qValue = map(analogRead(A0), 0, 1024, 1, 5);
   lcd.setCursor(0,1);
   lcd.print(replies[qNumber-1][qValue-1]);
   while(true)
   {
     delay(50);
-    if(qValue!= map(analogRead(A0), 14, 870, 1, 5))
+    if(qValue!= map(analogRead(A0), 0, 1024, 1, 5))
     {
       lcd.clear();
       lcd.setCursor(0,0);
       lcd.print(questions[qNumber-1]);
       
-      qValue = map(analogRead(A0), 14, 870, 1, 5);
+      qValue = map(analogRead(A0), 0, 1024, 1, 5);
       lcd.setCursor(0,1);
       lcd.print(replies[qNumber-1][qValue-1]);
     }
