@@ -5,6 +5,7 @@
     <h1>Greetings, admin!</h1>
     <h2>Welcome to the dashboard.</h2>
 
+    <?
     $host = "eu-cdbr-west-02.cleardb.net";
     $user = "b8100c5581c24b";
     $pass = "2ab80845";
