@@ -14,7 +14,7 @@
     </div>
 
     <div class="new-question-input">
-        <form id="edit-question-form" action="Backend/question_add.php" method="post">
+        <form id="edit-question-form" action="Backend/questions_add.php" method="post">
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="form-group">
