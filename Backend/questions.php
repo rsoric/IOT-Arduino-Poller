@@ -38,7 +38,7 @@ class Questions
         $sql = <<<EOSQL
             CREATE TABLE IF NOT EXISTS $this->_tableName (
             questionId         INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-            questionText       NVARCHAR (16) DEFAULT NULL,
+            questionText       NVARCHAR (16) DEFAULT NULL
         );
         EOSQL;
 
