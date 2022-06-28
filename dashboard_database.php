@@ -18,7 +18,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="form-group">
-                        <label for="questionText">Question:</label>
+                        <label for="questionText">Question text:</label>
                         <input class="form-control form-control-lg" type="text" name= "questionText" required>
                     </div>
                 </div>
