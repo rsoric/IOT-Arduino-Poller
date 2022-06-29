@@ -12,7 +12,7 @@
     </div>
   </div>
     <div class="row">
-        <div class="col-11">
+        <div class="col-8">
         <table class="table table-sm">
           <thead>
             <tr>

@@ -33,7 +33,7 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex p-2 justify-content-around">
+            <div class="d-flex p-2 justify-content-left">
 
                     <input type="submit" name="delete" class="btn btn-primary delete-question-button" value="Delete question">
 
