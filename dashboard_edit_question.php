@@ -23,13 +23,13 @@
 
     <div class="new-product-input">
         <form id="edit-question-form" action="Backend/questions_edit.php" method="post">
-            <div class="row justify-content-center">
+            <div class="row justify-content-left">
                 <div class="col-md-8">
                     <div class="form-group">
                         <label hidden for="questionId">Id Number:</label>
                         <input hidden class="form-control form-control-lg" type="text" name="questionId" value="<?php echo $questionId?>">
-                        <label for="albumDescription">Question Text:</label>
-                        <textarea class="form-control" rows="5" style="height:100%;" aria-label="With textarea" name="albumDescription"><?php echo $questionText?></textarea>
+                        <label for="albumName">Question Text:</label>
+                        <input class="form-control form-control-lg" type="text" name="questionText" value="<?php echo $questionText?>" required>
                     </div>
                 </div>
             </div>
