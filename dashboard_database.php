@@ -13,10 +13,10 @@
   </div>
     <div class="row">
         <div class="col-5">
-        <table class="table table-sm">
+        <table class="table">
           <thead>
             <tr>
-              <th>Text</th>
+              <th>Question</th>
             </tr>
             <tr>
             </tr>

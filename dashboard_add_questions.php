@@ -4,7 +4,7 @@
 
     <div class="row">
         <div class="col">
-            <h2>Add question:</h2>
+            <h3>Add question:</h3>
         </div>
         <div class="col-2">
             <form action="dashboard_database.php">
@@ -16,7 +16,7 @@
     <div class="new-question-input">
         <form id="edit-question-form" action="Backend/questions_add.php" method="post">
             <div class="row justify-content-left">
-                <div class="col-md-2">
+                <div class="col-md-3">
                     <div class="form-group">
                         <label for="questionText">Question:</label>
                         <input class="form-control form-control-lg" type="text" name= "questionText" maxlength="16" required>
