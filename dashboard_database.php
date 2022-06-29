@@ -1,34 +1,48 @@
-<?php include "dashboard_header.php"; ?>
+<?php 
+      include_once "dashboard_header.php";
+      include_once "Backend/questions.php";
+?>
 
 <div class="container-fluid dashboard-content">
-
+  <div class="row">
+    <div class="col-3">
+      <form action="dashboard_add_questions.php">
+        <input style="margin-bottom:20px;" class="product-edit-button" type="submit" value="Add question" id="add-question">
+      </form>
+    </div>
+  </div>
     <div class="row">
-        <div class="col">
-            <h1>Add question:</h1>
-        </div>
-        <div class="col-3">
-            <form action="dashboard-releases.php">
-                <input type="submit" id="back-button" value="Go back">
-            </form>
-        </div>
-    </div>
-
-    <div class="new-question-input">
-        <form id="edit-question-form" action="Backend/questions_add.php" method="post">
-            <div class="row justify-content-center">
-                <div class="col-md-8">
-                    <div class="form-group">
-                        <label for="questionText">Question text:</label>
-                        <input class="form-control form-control-lg" type="text" name= "questionText" required>
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex p-2 justify-content-around">
-                <input type="submit" name="addQuestion" class="btn btn-primary add-question-button" value="Save">   
-            </div>
-        </form>
-    </div>
-
+        <div class="col-11">
+        <table class="table table-sm">
+          <thead>
+            <tr>
+              <th scope="col">Text</th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php $_questions = $_questions->getDBdata();
+            while($question = $_questions->fetch()) :?>
+              <tr>
+                <form id="edit-form" action="dashboard_edit_question.php" method="post">
+                  <th style="display: none;" scope="row">
+                    <input type="hidden" name="questionId" value="<?= htmlspecialchars($question['questionId'])?>">
+                  </th>
+                  <th style="display: none;" scope="row">
+                    <input type="hidden" name="questionText" value="<?= $question['questionText']?>">
+                  </th>
+                  <td class="align-middle">
+                    <input class="question-edit-button" type="submit" name="submit" value="Edit" id="question-edit-1">
+                  </td>
+                </form>
+              </tr>
+          <?php 
+            endwhile; ?>
+          </tbody>
+        </table>
+        
+      </div>
+      </div>
+      
 </div>
 
-<?php include "dashboard_footer.php"; ?>
+<?php include "dashboard-footer.php";?>
