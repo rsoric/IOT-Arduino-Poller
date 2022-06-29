@@ -12,11 +12,13 @@
     </div>
   </div>
     <div class="row">
-        <div class="col-8">
+        <div class="col-5">
         <table class="table table-sm">
           <thead>
             <tr>
-              <th scope="col">Text</th>
+              <th>Text</th>
+            </tr>
+            <tr>
             </tr>
           </thead>
           <tbody>
@@ -27,11 +29,11 @@
                   <th style="display: none;" scope="row">
                     <input type="hidden" name="questionId" value="<?= htmlspecialchars($question['questionId'])?>">
                   </th>
-                  <td class="align-middle">
+                  <td class="align-left">
                     <input type="hidden" name="albumName" value="<?= htmlspecialchars($question['questionText'])?>">
                     <?= htmlspecialchars($question['questionText']) ?>
                   </td>
-                  <td class="align-middle">
+                  <td class="align-right">
                     <input class="question-edit-button" type="submit" name="submit" value="Edit" id="question-edit-1">
                   </td>
                 </form>
