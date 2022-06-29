@@ -35,10 +35,10 @@
             </div>
             <div class="d-flex p-2 justify-content-around">
 
-                    <input type="submit" name="delete" class="btn btn-primary delete-product-button" value="Delete questions">
+                    <input type="submit" name="delete" class="btn btn-primary delete-question-button" value="Delete question">
 
 
-                    <input type="submit" name="update" class="btn btn-primary add-product-button" value="Save">   
+                    <input type="submit" name="update" class="btn btn-primary add-question-button" value="Save">   
 
             </div>
         </form>

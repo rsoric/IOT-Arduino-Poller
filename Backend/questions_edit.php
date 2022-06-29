@@ -10,7 +10,7 @@
 
         if(isset($_POST['delete']))
         {
-            $_questions->deleteQuestion($albumID);
+            $_questions->deleteQuestion($questionId);
             header("Location: ../dashboard_database.php");
         }
         elseif(isset($_POST['update']))
