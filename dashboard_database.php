@@ -30,7 +30,7 @@
                     <input type="hidden" name="questionId" value="<?= htmlspecialchars($question['questionId'])?>">
                   </th>
                   <td class="align-left">
-                    <input type="hidden" name="albumName" value="<?= htmlspecialchars($question['questionText'])?>">
+                    <input type="hidden" name="questionText" value="<?= htmlspecialchars($question['questionText'])?>">
                     <?= htmlspecialchars($question['questionText']) ?>
                   </td>
                   <td class="align-right">
