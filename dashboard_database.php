@@ -27,7 +27,7 @@
                   <th style="display: none;" scope="row">
                     <input type="hidden" name="questionId" value="<?= htmlspecialchars($question['questionId'])?>">
                   </th>
-                  <th style="display: none;" scope="row">
+                  <th scope="row">
                     <input type="hidden" name="questionText" value="<?= $question['questionText']?>">
                   </th>
                   <td class="align-middle">
