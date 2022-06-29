@@ -20,16 +20,17 @@
             </tr>
           </thead>
           <tbody>
-          <?php $_questions = $_questions->getDBdata();
-            while($question = $_questions->fetch()) :?>
+          <?php $questions = $_questions->getDBdata();
+            while($question = $questions->fetch()) :?>
               <tr>
                 <form id="edit-form" action="dashboard_edit_question.php" method="post">
                   <th style="display: none;" scope="row">
                     <input type="hidden" name="questionId" value="<?= htmlspecialchars($question['questionId'])?>">
                   </th>
-                  <th scope="row">
-                    <input type="hidden" name="questionText" value="<?= $question['questionText']?>">
-                  </th>
+                  <td class="align-middle">
+                    <input type="hidden" name="albumName" value="<?= htmlspecialchars($question['questionText'])?>">
+                    <?= htmlspecialchars($question['questionText']) ?>
+                  </td>
                   <td class="align-middle">
                     <input class="question-edit-button" type="submit" name="submit" value="Edit" id="question-edit-1">
                   </td>
