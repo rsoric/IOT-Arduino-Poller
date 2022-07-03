@@ -42,8 +42,8 @@
                 questionReplyId     INT,
                 pollInstanceId      INT,
                 PRIMARY KEY (fullReplyId),
-                FOREIGN KEY (questionReplyId) REFERENCES question_reply(questionReplyId),
-                FOREIGN KEY (pollInstanceId) REFERENCES poll_instance(pollInstanceId)
+                FOREIGN KEY (questionReplyId) REFERENCES question_replies(questionReplyId),
+                FOREIGN KEY (pollInstanceId) REFERENCES poll_instances(pollInstanceId)
             );
             EOSQL;
 

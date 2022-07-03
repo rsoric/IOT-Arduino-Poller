@@ -31,7 +31,7 @@ class PollInstances
         $this->_connection = null;
     }
 
-    public function createTable($name = 'pollInstances')
+    public function createTable($name = 'poll_instances')
     {
         $this->_tableName = $name;
 
