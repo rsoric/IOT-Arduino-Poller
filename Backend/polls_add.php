@@ -8,6 +8,6 @@
         $pollDescription = sanitizeInput($_POST["pollDescription"]);
 
         $_polls->insertQuestion($pollDescription);
-        header("Location: ../dashboard_database.php");
+        header("Location: ../dashboard_add_poll.php");
     }
 

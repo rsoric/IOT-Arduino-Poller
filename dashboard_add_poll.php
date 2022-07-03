@@ -1,4 +1,7 @@
-<?php include "dashboard_header.php"; ?>
+<?php 
+include "dashboard_header.php";
+include_once "Backend/polls_add.php"; 
+?>
 
 <div class="container-fluid dashboard-content">
     <h1>Add Poll</h1>
