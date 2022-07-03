@@ -30,7 +30,7 @@
         <!-- Sidebar-->
         <div class="border-end bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading border-bottom">
-                <!--a href="index.php"><img src="img/spacebar_logo.png" alt="logo" id="sidebar-logo"></a-->
+                <a href="index.php"><img src="img/spacebar_logo.png" alt="logo" id="sidebar-logo"></a>
             </div>
             <div class="list-group list-group-flush text-center">
                 <a href="dashboard.php"
@@ -38,13 +38,10 @@
                     data-pathname="/dashboard.php">Home</a>
                 <a href="dashboard_database.php"
                     class="admin-panel-nav-item list-group-item list-group-item-action list-group-item-light p-3"
-                    data-pathname="/dashboard_database.php">Edit/Add Poll</a>
+                    data-pathname="/dashboard_add_poll.php">Add Poll</a>  
                 <a href="dashboard_statistics.php"
                     class="admin-panel-nav-item list-group-item list-group-item-action list-group-item-light p-3"
                     data-pathname="/dashboard_statistics.php">Poll results</a>
-                <a href="dashboard_statistics.php"
-                    class="admin-panel-nav-item list-group-item list-group-item-action list-group-item-light p-3"
-                    data-pathname="/dashboard_statistics.php">Set current poll</a>
                 <a href="Backend/logout.php"
                     class="admin-panel-nav-item list-group-item list-group-item-action list-group-item-light p-3"
                     data-pathname="Backend/logout.php">Log Out</a>
