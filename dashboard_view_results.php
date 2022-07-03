@@ -1,7 +1,7 @@
 <?php include "dashboard_header.php"; ?>
 
 <div class="container-fluid dashboard-content">
-    <h1>Add Poll</h1>
+    <h1>Poll results:</h1>
 
     <br>
     <!--
@@ -14,35 +14,23 @@
     </div>
 </div>-->
 
-    <form method="post" action="">
-        <div class="row">
-            <div class="col-10">
-                <label for="pollName">Poll Name</label>
-                <input type="text" class="form-control" id="pollName" aria-describedby="Poll Name">
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-10">
-                <div id="inputQuestionRow">
-                    <div class="input-group mb-3">
-                        <input type="text" name="title[]" class="form-control m-input" placeholder="Question text" autocomplete="off" maxlength="16">
-                        <div class="input-group-append">
-                            <button id="removeQuestion" type="button" class="btn btn-danger" disabled>Remove</button>
-                        </div>
+    <p>Choose a poll:</p>
+    <div class="row">
+        <div class="col-6">
+            <form>
+                <div class="input-group">
+                    <select class="custom-select" id="inputGroupSelect04">
+                        <option value="1">Poll 1</option>
+                        <option value="2">Poll 2</option>
+                        <option value="3">Poll 3</option>
+                    </select>
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="submit">Submit</button>
                     </div>
                 </div>
-                <div id="newQuestion"></div>
-                <button id="addQuestion" type="button" class="btn btn-secondary">Add question</button>
-            </div>
+            </form>
         </div>
-        <br>
-        <div class="row justify-content-end">
-            <div class="col-3">
-                <button id="addQuestion" type="button" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-    </form>
+    </div>
 
 </div>
 

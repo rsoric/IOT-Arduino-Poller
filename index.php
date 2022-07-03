@@ -47,7 +47,7 @@
 
         <main>
             <div>
-                <img src="img/logo.png" class="img-fluid">
+                <img src="img/poller_logo_large.png" class="img-fluid">
             </div>
         </main>
 
