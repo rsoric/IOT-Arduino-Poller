@@ -30,7 +30,7 @@
         <!-- Sidebar-->
         <div class="border-end bg-white" id="sidebar-wrapper">
             <div class="sidebar-heading border-bottom">
-                <a href="index.php"><img src="img/spacebar_logo.png" alt="logo" id="sidebar-logo"></a>
+                <a href="index.php"><img src="img/logo.png" alt="logo" id="sidebar-logo"></a>
             </div>
             <div class="list-group list-group-flush text-center">
                 <a href="dashboard.php"
