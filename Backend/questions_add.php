@@ -6,8 +6,9 @@
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
         $questionText = sanitizeInput($_POST["questionText"]);
+        $pollId = sanitizeInput($_POST["pollId"]);
 
-        $_questions->insertQuestion($questionText);
+        $_questions->insertQuestion($questionText, $pollId);
         header("Location: ../dashboard_database.php");
     }
 

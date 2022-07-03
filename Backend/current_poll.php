@@ -3,7 +3,7 @@
 require_once 'database_config.php';
 require_once 'sanitization.php';
 
-class Questions
+class CurrentPoll
 {
     private $_connection;
     private $_tableName;
@@ -31,16 +31,16 @@ class Questions
         $this->_connection = null;
     }
 
-    public function createTable($name = 'questions')
+    public function createTable($name = 'currentPoll')
     {
         $this->_tableName = $name;
 
         $sql = <<<EOSQL
             CREATE TABLE IF NOT EXISTS $this->_tableName (
-            questionId         INT AUTO_INCREMENT NOT NULL,
-            questionText       NVARCHAR (16) DEFAULT NULL,
-            pollId             INT, 
-            PRIMARY KEY (questionId),
+            restriction ENUM('') NOT NULL,
+            currentPollId INT NOT NULL,
+            pollId INT,
+            PRIMARY KEY (restriction),
             FOREIGN KEY (pollId) REFERENCES polls(pollId)
         );
         EOSQL;
@@ -49,22 +49,21 @@ class Questions
     }
 
 
-    public function insertQuestion($questionText, $pollId)
+    public function insertCurrentPoll($currentPollId, $pollId)
     {
-        $question = array(
-            ':questionText' => $questionText,
+        $currentPoll = array(
             ':pollId' => $pollId
         );
 
         $sql = <<<EOSQL
-            INSERT INTO $this->_tableName(questionText, pollId) VALUES(:questionText, :pollId);
+            INSERT INTO $this->_tableName(pollId) VALUES(:pollId);
         EOSQL;
 
         $stmt = $this->_connection->prepare($sql);
 
         try
         {
-            $stmt->execute($question);
+            $stmt->execute($currentPoll);
         }
         catch (Exception $e)
         {
@@ -72,33 +71,33 @@ class Questions
         }
     }
 
-    public function deleteQuestion($questionId)
+    public function deleteCurentPoll($pollId)
     {
         $sql = <<<EOSQL
-            DELETE FROM $this->_tableName WHERE questionId = $questionId;
+            DELETE FROM $this->_tableName WHERE pollId = $pollId;
         EOSQL;
 
         $this->_connection->exec($sql);
     }
 
-    public function updateQuestion($questionId, $questionText)
+    public function updateCurrentPoll($currentPollId, $pollId)
     {
-        $question = array(
-            ':questionId' => $questionId,
-            ':questionText' => $questionText
+        $currentPoll = array(
+            ':currentPollId' => $currentPollId,
+            ':pollId' => $pollId
         );
 
         $sql = <<<EOSQL
             UPDATE $this->_tableName
-            SET questionText = :questionText
-            WHERE questionId = :questionId;
+            SET pollId = :pollId;
+            WHERE currentPollId = :currentPollId
         EOSQL;
 
         $stmt = $this->_connection->prepare($sql);
 
         try
         {
-            $stmt->execute($question);
+            $stmt->execute($currentPoll);
         }
         catch (Exception $e)
         {
@@ -130,5 +129,5 @@ class Questions
   
 
 
- $_questions = new Questions();
+ $_currentPoll = new CurrentPoll();
   

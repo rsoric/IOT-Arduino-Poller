@@ -3,7 +3,7 @@
 require_once 'database_config.php';
 require_once 'sanitization.php';
 
-    class QuestionReply
+    class QuestionReplies
     {
         private $_connection;
         private $_tableName;
@@ -31,15 +31,16 @@ require_once 'sanitization.php';
             $this->_connection = null;
         }
 
-        public function createTable($name = 'question_reply'){
+        public function createTable($name = 'question_replies'){
 
             $this->_tableName = $name;
 
             $sql = <<<EOSQL
                 CREATE TABLE IF NOT EXISTS $this->_tableName (
-                questionReplyId         INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-                value       INT,
-                questionId      INT,
+                questionReplyId  INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+                value            INT,
+                questionId       INT,
+                PRIMARY KEY (questionReplyId),
                 FOREIGN KEY (questionId) REFERENCES questions(questionId) 
             );
             EOSQL;
@@ -125,7 +126,5 @@ require_once 'sanitization.php';
             }
         }
     }
-    
 
-
-    $_questionReply = new QuestionReply();
+    $_questionReplies = new QuestionReplies();

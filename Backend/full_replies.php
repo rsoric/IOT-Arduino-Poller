@@ -3,7 +3,7 @@
     require_once 'database_config.php';
     require_once 'sanitization.php';
 
-    class FullReply
+    class FullReplies
     {
         private $_connection;
         private $_tableName;
@@ -31,16 +31,17 @@
             $this->_connection = null;
         }
 
-        public function createTable($name = 'full_reply'){
+        public function createTable($name = 'full_replies'){
 
             $this->_tableName = $name;
 
             $sql = <<<EOSQL
                 CREATE TABLE IF NOT EXISTS $this->_tableName (
-                fullReplyId         INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
-                timestamp       TIMESTAMP,
-                questionReplyId      INT,
+                fullReplyId         INT AUTO_INCREMENT NOT NULL,
+                timestamp           TIMESTAMP,
+                questionReplyId     INT,
                 pollInstanceId      INT,
+                PRIMARY KEY (fullReplyId),
                 FOREIGN KEY (questionReplyId) REFERENCES question_reply(questionReplyId),
                 FOREIGN KEY (pollInstanceId) REFERENCES poll_instance(pollInstanceId)
             );
@@ -129,6 +130,4 @@
         }
     }
     
-
-
-    $_fullReply = new FullReply();
+    $_fullReply = new FullReplies();
