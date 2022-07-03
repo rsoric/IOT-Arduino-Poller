@@ -38,7 +38,7 @@ class Polls
         $sql = <<<EOSQL
             CREATE TABLE IF NOT EXISTS $this->_tableName (
             pollId             INT AUTO_INCREMENT NOT NULL,
-            pollDescription    NVARCHAR (300) DEFAULT NULL,
+            pollName    NVARCHAR (300) DEFAULT NULL,
             PRIMARY KEY (pollId)
         );
         EOSQL;
@@ -47,14 +47,14 @@ class Polls
     }
 
 
-    public function insertPoll($pollDescription)
+    public function insertPoll($pollName)
     {
         $poll = array(
-            ':pollDescription' => $pollDescription
+            ':pollName' => $pollName
         );
 
         $sql = <<<EOSQL
-            INSERT INTO $this->_tableName(pollDescription) VALUES(:pollDescription);
+            INSERT INTO $this->_tableName(pollName) VALUES(:pollName);
         EOSQL;
 
         $stmt = $this->_connection->prepare($sql);
@@ -78,16 +78,16 @@ class Polls
         $this->_connection->exec($sql);
     }
 
-    public function updatePoll($pollId, $pollDescription)
+    public function updatePoll($pollId, $pollName)
     {
         $poll = array(
             ':pollId' => $pollId,
-            ':pollDescription' => $pollDescription
+            ':pollName' => $pollName
         );
 
         $sql = <<<EOSQL
             UPDATE $this->_tableName
-            SET pollDescription = :pollDescription
+            SET pollName = :pollName
             WHERE pollId = :pollId;
         EOSQL;
 
@@ -128,4 +128,3 @@ class Polls
 
 
  $_polls = new Polls();
-  

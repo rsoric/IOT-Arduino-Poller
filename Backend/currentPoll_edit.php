@@ -5,7 +5,7 @@
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
-        $currentPoll = sanitizeInput($_POST["currentPollId"];)
+        $currentPoll = sanitizeInput($_POST["currentPollId"]);
         $pollId = sanitizeInput($_POST["pollId"]);
 
         if(isset($_POST['update']))

@@ -1,13 +1,13 @@
 <?php
 
     include_once "polls.php";
-    include_once "functions.php";
+    include_once "sanitization.php";
 
     if($_SERVER['REQUEST_METHOD'] == "POST")
     {
-        $pollDescription = sanitizeInput($_POST["pollDescription"]);
+        $pollName = sanitizeInput($_POST["pollName"]);
 
-        $_polls->insertQuestion($pollDescription);
+        $_polls->insertQuestion($pollName);
         header("Location: ../dashboard_add_poll.php");
     }
 

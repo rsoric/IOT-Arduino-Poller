@@ -37,7 +37,7 @@ require_once 'sanitization.php';
 
             $sql = <<<EOSQL
                 CREATE TABLE IF NOT EXISTS $this->_tableName (
-                questionReplyId  INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+                questionReplyId  INT AUTO_INCREMENT NOT NULL,
                 value            INT,
                 questionId       INT,
                 PRIMARY KEY (questionReplyId),

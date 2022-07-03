@@ -7,15 +7,6 @@ include_once "Backend/polls_add.php";
     <h1>Add Poll</h1>
 
     <br>
-    <!--
-<div class="row">
-    <div class="col-6">
-        <div class="form-group">
-            <label for="exampleInputEmail1">Poll Name</label>
-            <input type="text" class="form-control" id="pollName" aria-describedby="Poll Name">
-        </div>
-    </div>
-</div>-->
 
     <form method="post" action="">
         <div class="row">
@@ -46,6 +37,12 @@ include_once "Backend/polls_add.php";
             </div>
         </div>
     </form>
+
+    <?php
+
+    Poll.insertPoll("Test");
+    
+    ?>
 
 </div>
 

@@ -1,4 +1,5 @@
-<?php include "dashboard_header.php"; ?>
+<?php include "dashboard_header.php";
+include_once "Backend\currentPoll_edit.php";?>
 
 <div class="container-fluid dashboard-content">
 
@@ -13,9 +14,11 @@
             <form>
                 <div class="input-group">
                     <select class="custom-select" id="inputGroupSelect04">
-                        <option value="1">Poll 1</option>
-                        <option value="2">Poll 2</option>
-                        <option value="3">Poll 3</option>
+                        <?php $polls = $_polls->getDBdata();
+                        while ($poll = $polls->fetch()) : ?>
+                            <option value="<?= htmlspecialchars($poll['pollId'])?>"><?= htmlspecialchars($poll['pollName'])?></option>
+                        <?php
+                        endwhile; ?>
                     </select>
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="submit">Submit</button>
