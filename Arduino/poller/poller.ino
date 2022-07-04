@@ -30,6 +30,7 @@ String buffer = "";
 int numOfQuestions = 0;
 String questions[30];
 int replies[30];
+int currentPollID;
 
 void setup() {
   lcd.begin();
@@ -109,7 +110,9 @@ void getQuestions() {
   numOfQuestions = getNumberOfQuestions(buffer);
   Serial.println(numOfQuestions);
 
-  for(int i = 0; i < numOfQuestions; i++){
+  currentPollID = getValue(buffer,'|',1).toInt();
+
+  for(int i = 1; i < numOfQuestions+1; i++){
     questions[i] = getValue(buffer,'|',i+1);
     Serial.println(questions[i]);
   }
@@ -142,7 +145,7 @@ int getNumberOfQuestions(String buffer) {
     }
   }
 
-  return numSeparators - 1;
+  return numSeparators - 2;
 }
 
 void pollQuestions(int qNumber)

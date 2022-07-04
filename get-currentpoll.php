@@ -1,4 +1,6 @@
 <?php
+include_once "Backend/current_poll.php";
+
 $servername = "eu-cdbr-west-02.cleardb.net";
 $username = "b8100c5581c24b";
 $password = "2ab80845";
@@ -23,7 +25,7 @@ ini_set('display_errors', 'on');
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
-   // output data of each row
+   echo $_currentPoll->getIDOfCurrentPoll()->fetch()['pollId'];
    echo "|";
    while($question = $result->fetch_assoc()) {
      //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
