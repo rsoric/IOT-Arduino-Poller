@@ -12,14 +12,14 @@ if ($conn->connect_error) {
 }
 
 $sql = "
-SELECT pollId
+SELECT pollName
 FROM polls
 INNER JOIN currentpoll
 ON polls.PollId = currentpoll.currentPollId;
 ";
 
 if ($result = $conn->query($sql) === TRUE) {
-   echo "Result: ".$result;
+   echo "Result: ".$result['pollName'];
 } else {
    echo "Error: " . $sql . " => " . $conn->error;
 }

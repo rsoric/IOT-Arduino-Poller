@@ -14,15 +14,15 @@ LCD_I2C lcd(0x27, 16, 2);
 
 const char* ssid     = STASSID;
 const char* password = STAPSK;
-const char* host = "iotrisevi.herokuapp.com";
-String PATH_NAME   = "/get-currentpoll.php";
-const uint16_t port = 80;
+int    HTTP_PORT   = 80;
+String HTTP_METHOD = "GET"; // or POST
+char   HOST_NAME[] = "iotrisevi.herokuapp.com";
+String GET_POLL_PATH_NAME   = "/get-currentpoll.php";
 
 
 RBD::Button buttonForward(12);
 RBD::Button buttonBack(14);
 
-EthernetClient client;
 
 void setup() {
   Serial.begin(115200);
@@ -47,18 +47,10 @@ void setup() {
   lcd.clear();
   delay(5000);
 
-  // initialize the Ethernet shield using DHCP:
-  if (Ethernet.begin(mac) == 0) {
-    Serial.println("Failed to obtaining an IP address using DHCP");
-    while(true);
-  }
-
-  if(client.connect(HOST_NAME, HTTP_PORT)) {
-    // if connected:
+  WiFiClient client;
+  if (client.connect(HOST_NAME, HTTP_PORT)) {
     Serial.println("Connected to server");
-    // make a HTTP request:
-    // send HTTP header
-    client.println(HTTP_METHOD + " " + PATH_NAME + " HTTP/1.1");
+    client.println(HTTP_METHOD + " " + GET_POLL_PATH_NAME + " HTTP/1.1");
     client.println("Host: " + String(HOST_NAME));
     client.println("Connection: close");
     client.println(); // end HTTP header
@@ -69,12 +61,21 @@ void setup() {
         char c = client.read();
         Serial.print(c);
       }
-    }
+  }
+  }
+
+  while (client.available()) {
+    char ch = static_cast<char>(client.read());
+    Serial.print(ch);
+  }
+
+  client.stop();
+
+  
   
   lcd.home();
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
-
 }
