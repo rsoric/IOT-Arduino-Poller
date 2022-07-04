@@ -12,16 +12,25 @@ if ($conn->connect_error) {
 }
 
 $sql = "
-SELECT pollName
-FROM polls
+SELECT quesitonText
+FROM questions
 INNER JOIN currentpoll
-ON polls.PollId = currentpoll.currentPollId;
+ON questions.pollId = currentpoll.currentPollId;
 ";
 
-if ($result = $conn->query($sql) === TRUE) {
-   echo "Result: ".$result['pollName'];
-} else {
-   echo "Error: " . $sql . " => " . $conn->error;
+$stmt = $this->$conn->prepare($sql);
+try {
+   $stmt->execute();
+   $stmt->setFetchMode(PDO::FETCH_ASSOC);
+   $questions = $stmt->fetch();
+   while ($question = $questions->fetch()){
+      echo $question['questionText'];
+   }
+} catch (Exception $e) {
+   echo $e->getMessage();
 }
+
+
+
 
 $conn->close();
