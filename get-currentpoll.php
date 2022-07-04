@@ -18,7 +18,21 @@ INNER JOIN currentpoll
 ON questions.pollId = currentpoll.currentPollId;
 ";
 
-$stmt = $this->$conn->prepare($sql);
+error_reporting(E_ALL);
+ini_set('display_errors', 'on');
+
+$result = $conn->query($sql);
+if ($result->num_rows > 0) {
+   // output data of each row
+   while($question = $result->fetch_assoc()) {
+     //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+     echo $question['questionText']." ";
+   }
+ } else {
+   echo "0 results";
+ }
+/*
+$stmt = $conn->prepare($sql);
 try {
    $stmt->execute();
    $stmt->setFetchMode(PDO::FETCH_ASSOC);
@@ -27,8 +41,8 @@ try {
       echo $question['questionText'];
    }
 } catch (Exception $e) {
-   echo $e->getMessage();
-}
+   echo $e->getMessage();*/
+
 
 
 
