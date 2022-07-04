@@ -45,7 +45,5 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $_polls->deletePoll($pollId);
         header("Location: ../dashboard_edit_poll.php");
     }
-    echo("<pre>");
-    print_r($_REQUEST);
-    echo("</pre>");
+ 
 }

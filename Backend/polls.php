@@ -72,6 +72,7 @@ class Polls
     public function deletePoll($pollId)
     {
         $sql = <<<EOSQL
+            DELETE FROM questions WHERE pollId = $pollId;
             DELETE FROM $this->_tableName WHERE pollId = $pollId;
         EOSQL;
 
