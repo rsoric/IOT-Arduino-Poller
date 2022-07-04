@@ -64,11 +64,15 @@ void setup() {
     client.println(HTTP_METHOD + " " + GET_POLL_PATH_NAME + " HTTP/1.1");
     client.println("Host: " + String(HOST_NAME));
     client.println("Connection: close");
-    client.println(" "); // end HTTP header
+    client.println(); // end HTTP header
 
-    String line = client.readStringUntil('\r');
-    Serial.println(line);
-    
+    while(client.connected()) {
+      if(client.available()){
+        String line = client.readStringUntil('\r');
+        Serial.println(line);
+      }
+    }
+
     // the server's disconnected, stop the client:
     client.stop();
     Serial.println();

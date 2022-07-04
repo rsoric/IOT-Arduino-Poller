@@ -28,7 +28,7 @@ if ($result->num_rows > 0) {
      //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
      echo $question['questionText']."|";
    }
-   echo "\r";
+   echo "END";
  } else {
    echo "0 results";
  }
