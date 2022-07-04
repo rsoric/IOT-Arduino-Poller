@@ -47,6 +47,8 @@ class CurrentPoll
         $this->_connection->exec($sql);
     }
 
+    /*
+
 
     public function updateCurrentPoll($newCurrentPollID)
     {
@@ -70,7 +72,7 @@ class CurrentPoll
         {
             echo $e->getMessage();
         }
-    }
+    }*/
 
     public function deleteCurentPoll($pollId)
     {
@@ -81,18 +83,17 @@ class CurrentPoll
         $this->_connection->exec($sql);
     }
 
-    /*
-    public function updateCurrentPoll($currentPollId, $pollId)
+    
+    public function updateCurrentPoll($newPollID)
     {
         $currentPoll = array(
-            ':currentPollId' => $currentPollId,
-            ':pollId' => $pollId
+            ':pollId' => $newPollID,
         );
 
         $sql = <<<EOSQL
             UPDATE $this->_tableName
-            SET pollId = :pollId;
-            WHERE currentPollId = :currentPollId
+            SET currentPollId = :pollId
+            WHERE entryID = 1234
         EOSQL;
 
         $stmt = $this->_connection->prepare($sql);
@@ -105,7 +106,7 @@ class CurrentPoll
         {
             echo $e->getMessage();
         }
-    }*/
+    }
 
     public function getDBdata()
     {
