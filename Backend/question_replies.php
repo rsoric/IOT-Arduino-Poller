@@ -40,23 +40,26 @@ require_once 'sanitization.php';
                 questionReplyId  INT AUTO_INCREMENT NOT NULL,
                 value            INT,
                 questionId       INT,
+                pollInstanceId   INT,
                 PRIMARY KEY (questionReplyId),
-                FOREIGN KEY (questionId) REFERENCES questions(questionId) 
+                FOREIGN KEY (questionId) REFERENCES questions(questionId),
+                FOREIGN KEY (pollInstanceId) REFERENCES poll_instances(pollInstanceId) 
             );
             EOSQL;
 
             $this->_connection->exec($sql);
         }
 
-        public function insertQuestionReply($value, $questionId)
+        public function insertQuestionReply($value, $questionId, $pollInstanceId)
         {
             $questionReply = array(
                 ':value' => $value,
-                ':questionId' => $questionId
+                ':questionId' => $questionId,
+                ':pollInstanceId' => $pollInstanceId
             );
 
             $sql = <<<EOSQL
-                INSERT INTO $this->_tableName(value, questionId) VALUES(:value, :questionId);
+                INSERT INTO $this->_tableName(value, questionId, pollInstanceId) VALUES(:value, :questionId, :pollInstanceId);
             EOSQL;
 
             $stmt = $this->_connection->prepare($sql);

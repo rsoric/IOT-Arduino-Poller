@@ -39,6 +39,7 @@ class PollInstances
             CREATE TABLE IF NOT EXISTS $this->_tableName (
             pollInstanceId      INT AUTO_INCREMENT NOT NULL,
             pollId              INT,
+            timestamp           TIMESTAMP,
             PRIMARY KEY (pollInstanceId),
             FOREIGN KEY (pollId) REFERENCES polls(pollId)
         );
@@ -56,6 +57,31 @@ class PollInstances
 
         $sql = <<<EOSQL
             INSERT INTO $this->_tableName(pollId) VALUES(:pollId);
+        EOSQL;
+
+        $stmt = $this->_connection->prepare($sql);
+
+        try
+        {
+            $stmt->execute($pollInstance);
+        }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
+        }
+    }
+
+    public function updateTimeStamp($pollInstanceId, $timestamp)
+    {
+        $pollInstance = array(
+            ':pollInstanceId' => $pollInstanceId,
+            ':timestamp' => $timestamp
+        );
+
+        $sql = <<<EOSQL
+            UPDATE $this->_tableName
+            SET timestamp = :timestamp
+            WHERE pollInstanceId = :pollInstanceId;
         EOSQL;
 
         $stmt = $this->_connection->prepare($sql);
