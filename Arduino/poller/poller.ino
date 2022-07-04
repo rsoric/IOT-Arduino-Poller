@@ -206,6 +206,7 @@ void sendData(){
     Serial.println(" ");
     Serial.println("Connected to server");
     client.println("POST /insert-response.php?values="+repliesToString()+"&ID="+currentPollID+" HTTP/1.1");
+    Serial.println("POST /insert-response.php?values="+repliesToString()+"&ID="+currentPollID+" HTTP/1.1");
     client.println("Host: iotrisevi.herokuapp.com");
     client.println("User-Agent: arduino-wifi");
     client.println("Connection: close");

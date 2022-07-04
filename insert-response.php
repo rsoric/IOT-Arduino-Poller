@@ -11,6 +11,11 @@ if(isset($_GET["values"],$_GET["ID"]))
    $values = $_GET["values"];
    $currentPollID = $_GET["ID"];
 
+   print_r("ID : ");
+
+   print_r($currentPollID);
+
+   print_r("!!!!!!!!!");
 
    $arrayOfReplyValues = explode("|", $values);
 
@@ -20,15 +25,29 @@ if(isset($_GET["values"],$_GET["ID"]))
 
    $pollQuestions = $_polls->getPollQuestions($currentPollID);
 
-   //print_r($pollQuestions['questionId']);
+   $counter = 0;
 
+   while ($pollQuestion = $pollQuestions->fetch())
+   {
+      $_questionReplies->insertQuestionReply(
+         $arrayOfReplyValues[$counter],
+         $pollQuestion['questionId'],
+         $insertedPollInstanceID
+      );
+
+      $counter = $counter + 1;
+   }
+
+   /*
    for ($x = 0; $x <= count($pollQuestions['questionId']); $x++) {
       $_questionReplies->insertQuestionReply(
           $arrayOfReplyValues[$x],
           $pollQuestions['questionId'][$x],
           $insertedPollInstanceID
       );
-   }
+   }*/
+
+
 /*
    foreach ($arrayOfReplyValues as $value) {
       $_questionReplies->insertQuestionReply($value);
