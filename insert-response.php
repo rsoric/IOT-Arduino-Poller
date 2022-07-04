@@ -1,39 +1,37 @@
 <?php
 
+include_once "Backend/pollInstances.php";
+include_once "Backend/current_poll.php";
+include_once "Backend/question_replies.php";
+include_once "Backend/polls.php";
+
 if(isset($_GET["values"])) {
    //$temperature = $_GET["temperature"]; // get temperature value from HTTP GET
-   $q1 = $_GET["values"];
+   $values = $_GET["values"];
 
-   print_r($q1);
 
-   /*
-   
-   $servername = "eu-cdbr-west-02.cleardb.net";
-   $username = "b8100c5581c24b";
-   $password = "2ab80845";
-   $dbname = "heroku_526e4c652212ab8";
+   $arrayOfReplyValues = explode("|", $values);
 
-   // Create connection
-   $conn = new mysqli($servername, $username, $password, $dbname);
-   // Check connection
-   if ($conn->connect_error) {
-      die("Connection failed: " . $conn->connect_error);
+   //$values = array_pop(explode("|", $values));
+
+   $insertedPollInstanceID = $_pollInstances->insertPollInstance($_currentPoll->getIDOfCurrentPoll());
+
+   $pollQuestions = $_polls->getPollQuestions($_currentPoll->getIDOfCurrentPoll()->fetch()['pollId']);
+
+   //print_r($pollQuestions['questionId']);
+
+   for ($x = 0; $x <= count($pollQuestions['questionId']); $x++) {
+      $_questionReplies->insertQuestionReply(
+          $arrayOfReplyValues[$x],
+          $pollQuestions['questionId'][$x],
+          $insertedPollInstanceID
+      );
    }
-
-
-   
-
-   $sql = "INSERT INTO responses (q1, q2, q3, timeOfPolling) VALUES ($q1, $q2, $q3,CURRENT_TIMESTAMP)";
-
-   if ($conn->query($sql) === TRUE) {
-      echo "New record created successfully";
-   } else {
-      echo "Error: " . $sql . " => " . $conn->error;
-   }
-
-   $conn->close();
-} else {
-   echo "Responses are not set";
-}*/
+/*
+   foreach ($arrayOfReplyValues as $value) {
+      $_questionReplies->insertQuestionReply($value);
+   }*/
 }
+
+
 ?>

@@ -152,7 +152,7 @@ class Polls
     {
         $sql = <<<EOSQL
             SELECT * FROM questions
-            WHERE pollId = $pollId;
+                WHERE pollId = $pollId;
         EOSQL;
 
         $stmt = $this->_connection->prepare($sql);
@@ -169,6 +169,8 @@ class Polls
             echo $e->getMessage();
         }
     }
+
+
   }
   
 

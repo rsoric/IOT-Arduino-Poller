@@ -51,8 +51,10 @@ class PollInstances
 
     public function insertPollInstance($pollId)
     {
+        $pollOfWhichInstance = $pollId->fetch();
+
         $pollInstance = array(
-            ':pollId' => $pollId
+            ':pollId' => $pollOfWhichInstance['pollId']
         );
 
         $sql = <<<EOSQL
@@ -69,6 +71,8 @@ class PollInstances
         {
             echo $e->getMessage();
         }
+
+        return $this->_connection->lastInsertId();
     }
 
     public function updateTimeStamp($pollInstanceId, $timestamp)
