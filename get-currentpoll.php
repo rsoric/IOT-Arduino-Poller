@@ -12,7 +12,7 @@ if ($conn->connect_error) {
 }
 
 $sql = "
-SELECT quesitonText
+SELECT questionText
 FROM questions
 INNER JOIN currentpoll
 ON questions.pollId = currentpoll.currentPollId;
@@ -26,7 +26,7 @@ if ($result->num_rows > 0) {
    // output data of each row
    while($question = $result->fetch_assoc()) {
      //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
-     echo $question." ";
+     echo $question['questionText']." ";
    }
  } else {
    echo "0 results";
