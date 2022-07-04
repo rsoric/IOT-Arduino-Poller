@@ -1,21 +1,51 @@
-<?php 
+<?php
 
-    include_once "polls.php";
-    include_once "functions.php";
+include_once "polls.php";
+include_once "questions.php";
+include_once "sanitization.php";
 
-    if($_SERVER['REQUEST_METHOD'] == "POST")
-    {
-        $pollId = sanitizeInput($_POST["pollId"]);
-        $pollDescription = sanitizeInput($_POST["pollDescription"]);
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $pollId = sanitizeInput($_POST["pollId"]);
+    $pollName = sanitizeInput($_POST["pollName"]);
 
-        if(isset($_POST['delete']))
-        {
-            $_polls->deleteQuestion($pollId);
-            header("Location: ../dashboard_database.php");
+    if (isset($_POST['update'])) {
+
+        echo("<pre>");
+        print_r($_REQUEST);
+        echo("</pre>");
+
+        
+        $_polls->updatePoll($pollId, $pollName);
+        
+        foreach ($_POST["questions"] as $question) {
+            if($question["deleteQuestion"]=="true")
+            {
+                $_questions->deleteQuestion(sanitizeInput($question["questionId"]));
+            }
+            else{
+                $_questions->updateQuestion(sanitizeInput($question["questionId"]),sanitizeInput($question["questionText"]));
+            }
         }
-        elseif(isset($_POST['update']))
+
+        if(!empty($_POST["newQuestions"]))
         {
-            $_polls->updateQuestion($pollId, $pollDescription);
-            header("Location: ../dashboard_database.php");
+            foreach ($_POST["newQuestions"] as $question){
+                $_questions->insertQuestion(sanitizeInput($question),$pollId);
+            }
         }
+
+        header("Location: ../dashboard_edit_poll.php");
+        
     }
+    else if (isset($_POST['delete'])){
+        echo("<pre>");
+        print_r($_REQUEST);
+        echo("</pre>");
+
+        $_polls->deletePoll($pollId);
+        header("Location: ../dashboard_edit_poll.php");
+    }
+    echo("<pre>");
+    print_r($_REQUEST);
+    echo("</pre>");
+}

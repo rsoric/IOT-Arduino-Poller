@@ -51,7 +51,8 @@ include_once "Backend/polls.php";
             <div class="row">
                 <div class="col-10">
                     <label for="pollName">Poll Name</label>
-                    <input type="text" class="form-control" id="pollName" name="pollName" value="<?= $pollName ?>"   aria-describedby="Poll Name">
+                    <input type="text" class="form-control" id="pollName" name="pollName" value="<?=$pollName?>"   aria-describedby="Poll Name">
+                    <input type="hidden" id="pollId" name="pollId" value="<?=$id?>">
                 </div>
             </div>
             <br>
@@ -63,7 +64,9 @@ include_once "Backend/polls.php";
                 <div class="col-10">
                     <div id="inputQuestionRow"> 
                         <div class="input-group mb-3">
-                            <input type="text" name="questions[]" class="form-control m-input" value="<?= $poll['questionText'] ?>" autocomplete="off" maxlength="16">
+                            <input type="text" id="question" name="questions[Question<?= $poll['questionId'] ?>][questionText]" class="form-control m-input" value="<?=$poll['questionText']?>" autocomplete="off" maxlength="16">
+                            <input type="hidden" id="questionID" name="questions[Question<?= $poll['questionId'] ?>][questionId]" value="<?= $poll['questionId'] ?>">
+                            <input type="hidden" id="questionToDelete" name="questions[Question<?= $poll['questionId'] ?>][deleteQuestion]" value="false">
                             <div class="input-group-append">
                                 <button id="removeQuestion" type="button" class="btn btn-danger">Remove</button>
                             </div>
@@ -75,7 +78,12 @@ include_once "Backend/polls.php";
             </div>
             <br>
             <button id="addQuestion" type="button" class="btn btn-secondary">Add question</button>
-            <div class="row justify-content-end">
+            <br>
+            <br>
+            <div class="row justify-content-between">
+                <div class="col-3">
+                    <button class="btn btn-danger" type="submit" name="delete">Delete Poll</button>
+                </div>
                 <div class="col-3">
                     <button class="btn btn-primary" type="submit" name="update">Submit</button>
                 </div>
@@ -131,7 +139,7 @@ include_once "Backend/polls.php";
         html += '<div class="col-10">';
         html += '<div id="inputQuestionRow">';
         html += '<div class="input-group mb-3">';
-        html += '<input type="text" name="questions[]" class="form-control m-input" placeholder="Question text" autocomplete="off" maxlength="16">';
+        html += '<input type="text" name="newQuestions[]" class="form-control m-input" placeholder="Question text" autocomplete="off" maxlength="16">';
         html += '<div class="input-group-append">';
         html += '<button id="removeQuestion" type="button" class="btn btn-danger">Remove</button>';
         html += '</div>';
@@ -144,7 +152,8 @@ include_once "Backend/polls.php";
 
     // remove row
     $(document).on('click', '#removeQuestion', function() {
-        $(this).closest('#inputQuestionRow').remove();
+        $(this).closest('#inputQuestionRow').hide();
+        $(this).closest('#inputQuestionRow').children().children("#questionToDelete").attr('value','true');
     });
 </script>
 
