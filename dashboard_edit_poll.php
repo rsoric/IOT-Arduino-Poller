@@ -196,4 +196,20 @@ if (isset($_GET['DeleteSuccess'])) {
 
     <?php } ?>
 
+    <?php
+if (isset($_GET['DeleteWarning'])) {
+
+?>
+<br>
+    <div class="row">
+        <div class="col-10">
+        <div class="alert alert-warning" role="alert">
+            Can't delete poll that is currently active!
+        </div>
+        </div>
+
+        </row>
+
+    <?php } ?>
+
 <?php include "dashboard_footer.php"; ?>

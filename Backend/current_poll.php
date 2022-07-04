@@ -153,6 +153,30 @@ class CurrentPoll
         }
     }
 
+    public function getIDOfCurrentPoll()
+    {
+        $sql = <<<EOSQL
+            SELECT pollId
+            FROM polls
+            INNER JOIN currentpoll
+            ON polls.PollId = currentpoll.currentPollId;
+        EOSQL;
+
+        $stmt = $this->_connection->prepare($sql);
+
+        try
+        {
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            return $stmt;
+
+        }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
+        }
+    }
+
   }
 
 

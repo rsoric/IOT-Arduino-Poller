@@ -1,6 +1,7 @@
 <?php
 
 include_once "polls.php";
+include_once "current_poll.php";
 include_once "questions.php";
 include_once "sanitization.php";
 
@@ -42,6 +43,15 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         print_r($_REQUEST);
         echo("</pre>");
 
+        $polls = $_currentPoll->getIDOfCurrentPoll();
+        while ($poll = $polls->fetch())
+        {
+            if($poll['pollId']==$pollId)
+            {
+                header("Location: ../dashboard_edit_poll.php?DeleteWarning");
+                return; 
+            }
+        }
         $_polls->deletePoll($pollId);
         header("Location: ../dashboard_edit_poll.php?DeleteSuccess");
     }
