@@ -23,6 +23,10 @@ String GET_POLL_PATH_NAME   = "/get-currentpoll.php";
 RBD::Button buttonForward(12);
 RBD::Button buttonBack(14);
 
+String questions[50];
+int numQuestions = 0;
+String buffer = "";
+bool firstStringSplitMarkerRead = false;
 
 void setup() {
   Serial.begin(115200);
@@ -61,14 +65,8 @@ void setup() {
         char c = client.read();
         Serial.print(c);
       }
+    }
   }
-  }
-
-  while (client.available()) {
-    char ch = static_cast<char>(client.read());
-    Serial.print(ch);
-  }
-
   client.stop();
 
   
