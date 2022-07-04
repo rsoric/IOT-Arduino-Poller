@@ -50,7 +50,7 @@ class CurrentPoll
 
     public function updateCurrentPoll($newCurrentPollID)
     {
-        $pollID = array(
+        $poll = array(
             ':pollId' => $newCurrentPollID
         );
 
@@ -64,7 +64,7 @@ class CurrentPoll
 
         try
         {
-            $stmt->execute($pollID);
+            $stmt->execute($poll);
         }
         catch (Exception $e)
         {
