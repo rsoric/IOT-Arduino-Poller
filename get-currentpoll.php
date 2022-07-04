@@ -25,6 +25,7 @@ ini_set('display_errors', 'on');
 
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
+   echo "|";
    echo $_currentPoll->getIDOfCurrentPoll()->fetch()['pollId'];
    echo "|";
    while($question = $result->fetch_assoc()) {
