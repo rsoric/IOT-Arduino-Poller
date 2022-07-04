@@ -193,6 +193,8 @@ void sendData(){
   lcd.setCursor(0,0);
   lcd.print("Sending...");
 
+  Serial.println(repliesToString());
+
  WiFiClient client;
 
   if (client.connect(HOST_NAME, HTTP_PORT)) {
