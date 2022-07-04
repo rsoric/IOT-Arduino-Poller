@@ -93,7 +93,7 @@ class CurrentPoll
         $sql = <<<EOSQL
             UPDATE $this->_tableName
             SET currentPollId = :pollId
-            WHERE entryID = "1234";
+            WHERE entryID = 1234;
         EOSQL;
 
         $stmt = $this->_connection->prepare($sql);
