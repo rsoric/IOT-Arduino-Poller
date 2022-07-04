@@ -8,11 +8,11 @@ include_once "Backend/polls_add.php";
 
     <br>
 
-    <form method="post" action="">
+    <form method="POST" action="Backend/polls_add.php">
         <div class="row">
             <div class="col-10">
                 <label for="pollName">Poll Name</label>
-                <input type="text" class="form-control" id="pollName" aria-describedby="Poll Name">
+                <input type="text" class="form-control" id="pollName" name="pollName" aria-describedby="Poll Name">
             </div>
         </div>
         <br>
@@ -20,7 +20,7 @@ include_once "Backend/polls_add.php";
             <div class="col-10">
                 <div id="inputQuestionRow">
                     <div class="input-group mb-3">
-                        <input type="text" name="title[]" class="form-control m-input" placeholder="Question text" autocomplete="off" maxlength="16">
+                        <input type="text" name="questions[]" class="form-control m-input" placeholder="Question text" autocomplete="off" maxlength="16">
                         <div class="input-group-append">
                             <button id="removeQuestion" type="button" class="btn btn-danger" disabled>Remove</button>
                         </div>
@@ -33,16 +33,10 @@ include_once "Backend/polls_add.php";
         <br>
         <div class="row justify-content-end">
             <div class="col-3">
-                <button id="addQuestion" type="button" class="btn btn-primary">Submit</button>
+                <button class="btn btn-primary" type="submit" name="update">Submit</button>
             </div>
         </div>
     </form>
-
-    <?php
-
-    Poll.insertPoll("Test");
-    
-    ?>
 
 </div>
 
@@ -52,7 +46,7 @@ include_once "Backend/polls_add.php";
         var html = '';
         html += '<div id="inputQuestionRow">';
         html += '<div class="input-group mb-3">';
-        html += '<input type="text" name="title[]" class="form-control m-input" placeholder="Question text" autocomplete="off" maxlength="16">';
+        html += '<input type="text" name="questions[]" class="form-control m-input" placeholder="Question text" autocomplete="off" maxlength="16">';
         html += '<div class="input-group-append">';
         html += '<button id="removeQuestion" type="button" class="btn btn-danger">Remove</button>';
         html += '</div>';

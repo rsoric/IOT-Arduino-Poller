@@ -22,7 +22,6 @@ class Polls
         {
             debug_to_console("Not Connected");
         }
-
         $this->createTable();
     }
 
@@ -67,6 +66,7 @@ class Polls
         {
             echo $e->getMessage();
         }
+        return $this->_connection->lastInsertId();
     }
 
     public function deletePoll($pollId)
@@ -103,6 +103,7 @@ class Polls
         }
     }
 
+
     public function getDBdata()
     {
         $sql = <<<EOSQL
@@ -111,6 +112,50 @@ class Polls
 
         $stmt = $this->_connection->prepare($sql);
 
+        try
+        {
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            return $stmt;
+
+        }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getPollToEdit($pollId)
+    {
+        $sql = <<<EOSQL
+            SELECT * FROM $this->_tableName
+            WHERE pollId = $pollId;
+        EOSQL;
+
+        $stmt = $this->_connection->prepare($sql);
+
+        try
+        {
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            return $stmt;
+
+        }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getPollQuestions($pollId)
+    {
+        $sql = <<<EOSQL
+            SELECT * FROM questions
+            WHERE pollId = $pollId;
+        EOSQL;
+
+        $stmt = $this->_connection->prepare($sql);
+        
         try
         {
             $stmt->execute();

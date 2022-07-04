@@ -1,38 +1,60 @@
-<?php include "dashboard_header.php";
-include_once "Backend\currentPoll_edit.php";?>
+<?php
+include "dashboard_header.php";
+include_once "Backend/polls.php";
+include_once "Backend/current_poll.php";
+?>
 
 <div class="container-fluid dashboard-content">
 
-    <h1>Greetings, admin!</h1>
-    <h2>Welcome to the dashboard.</h2>
+    <h5>Greetings, admin!</h5>
+    <p>Welcome to the dashboard.</p>
 
     <br>
+    <br>
+    <h2>The current active poll is:
+        <?php $polls = $_currentPoll->getNameOfCurrentPoll();
+        while ($poll = $polls->fetch()) : ?>
+            <?= htmlspecialchars($poll['pollName']) ?>
+        <?php endwhile; ?>
+    </h2>
+    <br>
 
-    <p>Choose the current active poll:</p>
+    <p>Change the current active poll:</p>
+
+    <form action="Backend/currentPoll_edit.php" method="POST">
+
     <div class="row">
         <div class="col-6">
-            <form>
+            
                 <div class="input-group">
-                    <select class="custom-select" id="inputGroupSelect04">
+                    <select class="custom-select" id="currentPollId" name="currentPollId">
                         <?php $polls = $_polls->getDBdata();
                         while ($poll = $polls->fetch()) : ?>
-                            <option value="<?= htmlspecialchars($poll['pollId'])?>"><?= htmlspecialchars($poll['pollName'])?></option>
-                        <?php
-                        endwhile; ?>
+                            <option value="<?= htmlspecialchars($poll['pollId']) ?>"><?= htmlspecialchars($poll['pollName']) ?></option>
+                        <?php endwhile; ?>
                     </select>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="submit">Submit</button>
-                    </div>
                 </div>
-            </form>
+
+                
         </div>
+        
     </div>
 
 
+    <div class="row justify-content-end">
+            <div class="col-3">
+                <button class="btn btn-primary" type="submit" name="update">Submit</button>
+            </div>
+        </div>
 
-    <?php
+    </form>
+</div>
 
-    /*
+
+
+<?php
+
+/*
     $host = "eu-cdbr-west-02.cleardb.net";
     $user = "b8100c5581c24b";
     $pass = "2ab80845";
@@ -66,7 +88,7 @@ include_once "Backend\currentPoll_edit.php";?>
         echo "
     </table>";
     */
-    ?>
+?>
 
 </div>
 

@@ -14,6 +14,16 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="CustomCss/style.css" />
     <link rel="stylesheet" href="CustomCss/slick.css" />
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
+    <!-- Bootstrap core JS-->
+    <script src="Bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="CustomJs/sidebar.js"></script>
+    <!-- JQuery -->
+    <script src="CustomJs/jquery.js"></script>
+    <!-- Slick Plugin -->
+    <script src="CustomJs/slick.min.js"></script>
+
 </head>
 
 <body>
@@ -38,7 +48,10 @@
                     data-pathname="/dashboard.php">Home</a>
                 <a href="dashboard_add_poll.php"
                     class="admin-panel-nav-item list-group-item list-group-item-action list-group-item-light p-3"
-                    data-pathname="/dashboard_add_poll.php">Add Poll</a>  
+                    data-pathname="/dashboard_add_poll.php">Add Poll</a>
+                <a href="dashboard_edit_poll.php"
+                   class="admin-panel-nav-item list-group-item list-group-item-action list-group-item-light p-3"
+                   data-pathname="/dashboard_edit_poll.php">Edit Poll</a>
                 <a href="dashboard_view_results.php"
                     class="admin-panel-nav-item list-group-item list-group-item-action list-group-item-light p-3"
                     data-pathname="/dashboard_view_results.php">Poll results</a>

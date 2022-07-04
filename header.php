@@ -13,6 +13,7 @@
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="Bootstrap/js/bootstrap.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
 
     <style>
     .bd-placeholder-img {

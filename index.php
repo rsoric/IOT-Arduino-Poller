@@ -11,6 +11,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/img/favicon.png">
     <script type="text/javascript" src="Bootstrap/js/bootstrap.min.js"></script>
 
     <style>

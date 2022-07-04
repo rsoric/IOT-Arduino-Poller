@@ -37,11 +37,10 @@ class CurrentPoll
 
         $sql = <<<EOSQL
             CREATE TABLE IF NOT EXISTS $this->_tableName (
-            restriction ENUM('') NOT NULL,
-            currentPollId INT NOT NULL,
-            pollId INT,
-            PRIMARY KEY (restriction),
-            FOREIGN KEY (pollId) REFERENCES polls(pollId)
+            entryID            INT AUTO_INCREMENT NOT NULL,
+            currentPollId      INT NOT NULL,
+            FOREIGN KEY (currentPollId) REFERENCES polls(pollId),
+            PRIMARY KEY (entryID)
         );
         EOSQL;
 
@@ -49,21 +48,23 @@ class CurrentPoll
     }
 
 
-    public function insertCurrentPoll($currentPollId, $pollId)
+    public function updateCurrentPoll($newCurrentPollID)
     {
-        $currentPoll = array(
-            ':pollId' => $pollId
+        $pollID = array(
+            ':pollId' => $newCurrentPollID
         );
 
         $sql = <<<EOSQL
-            INSERT INTO $this->_tableName(pollId) VALUES(:pollId);
+            UPDATE currentPoll 
+            SET currentPollId = (:pollId)
+            WHERE entryID = 1234
         EOSQL;
 
         $stmt = $this->_connection->prepare($sql);
 
         try
         {
-            $stmt->execute($currentPoll);
+            $stmt->execute($pollID);
         }
         catch (Exception $e)
         {
@@ -80,6 +81,7 @@ class CurrentPoll
         $this->_connection->exec($sql);
     }
 
+    /*
     public function updateCurrentPoll($currentPollId, $pollId)
     {
         $currentPoll = array(
@@ -103,7 +105,7 @@ class CurrentPoll
         {
             echo $e->getMessage();
         }
-    }
+    }*/
 
     public function getDBdata()
     {
@@ -125,8 +127,33 @@ class CurrentPoll
             echo $e->getMessage();
         }
     }
+
+    public function getNameOfCurrentPoll()
+    {
+        $sql = <<<EOSQL
+            SELECT pollName
+            FROM polls
+            INNER JOIN currentpoll
+            ON polls.PollId = currentpoll.currentPollId;
+        EOSQL;
+
+        $stmt = $this->_connection->prepare($sql);
+
+        try
+        {
+            $stmt->execute();
+            $stmt->setFetchMode(PDO::FETCH_ASSOC);
+            return $stmt;
+
+        }
+        catch (Exception $e)
+        {
+            echo $e->getMessage();
+        }
+    }
+
   }
-  
+
 
 
  $_currentPoll = new CurrentPoll();

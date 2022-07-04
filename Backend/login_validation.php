@@ -19,7 +19,7 @@ ini_set('display_errors', 'on');
             debug_to_console($admin);
             if($admin['adminUsername'] == $adminUsername && $admin['adminPassword'] == $adminPassword) 
             {
-                setcookie("Admin", $adminUsername, time()+600, '/');
+                setcookie("Admin", $adminUsername, time()+9999999, '/');
                 header("Location: ../dashboard.php");
             }
             else 
