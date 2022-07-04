@@ -1,7 +1,7 @@
 <?php
 
 
-include_once "current_Poll.php";
+include_once "current_poll.php";
 include_once "sanitization.php";
 
 
