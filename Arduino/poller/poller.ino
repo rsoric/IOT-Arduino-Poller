@@ -111,9 +111,11 @@ void getQuestions() {
   Serial.println(numOfQuestions);
 
   currentPollID = getValue(buffer,'|',1).toInt();
+  Serial.println("current Poll ID:");
+  Serial.println(currentPollID);
 
-  for(int i = 1; i < numOfQuestions+1; i++){
-    questions[i] = getValue(buffer,'|',i+1);
+  for(int i = 0; i < numOfQuestions; i++){
+    questions[i] = getValue(buffer,'|',i+2);
     Serial.println(questions[i]);
   }
 }
@@ -203,7 +205,7 @@ void sendData(){
   if (client.connect(HOST_NAME, HTTP_PORT)) {
     Serial.println(" ");
     Serial.println("Connected to server");
-    client.println("POST /insert-response.php?values="+repliesToString()+" HTTP/1.1");
+    client.println("POST /insert-response.php?values="+repliesToString()+"&ID="+currentPollID+" HTTP/1.1");
     client.println("Host: iotrisevi.herokuapp.com");
     client.println("User-Agent: arduino-wifi");
     client.println("Connection: close");

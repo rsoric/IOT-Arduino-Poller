@@ -5,9 +5,11 @@ include_once "Backend/current_poll.php";
 include_once "Backend/question_replies.php";
 include_once "Backend/polls.php";
 
-if(isset($_GET["values"])) {
+if(isset($_GET["values"],$_GET["ID"])) 
+{
    //$temperature = $_GET["temperature"]; // get temperature value from HTTP GET
    $values = $_GET["values"];
+   $currentPollID = $_GET["ID"];
 
 
    $arrayOfReplyValues = explode("|", $values);
@@ -16,7 +18,7 @@ if(isset($_GET["values"])) {
 
    $insertedPollInstanceID = $_pollInstances->insertPollInstance($_currentPoll->getIDOfCurrentPoll());
 
-   $pollQuestions = $_polls->getPollQuestions($_currentPoll->getIDOfCurrentPoll()->fetch()['pollId']);
+   $pollQuestions = $_polls->getPollQuestions($currentPollID);
 
    //print_r($pollQuestions['questionId']);
 
