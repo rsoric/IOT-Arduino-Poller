@@ -92,7 +92,7 @@ class CurrentPoll
 
         $sql = <<<EOSQL
             UPDATE currentpoll
-            SET currentPollId = 201
+            SET currentPollId = :pollId
             WHERE entryID = 1234;
         EOSQL;
 

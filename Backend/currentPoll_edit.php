@@ -10,8 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $currentPoll = sanitizeInput($_POST["currentPollId"]);
 
     if (isset($_POST['update'])) {
+        
+        try{
+            $_currentPoll->updateCurrentPoll($currentPoll);
+        }catch (Exception $e) {
+            echo 'Caught exception: ',  $e->getMessage(), "\n";
+        }
 
-        $_currentPoll->updateCurrentPoll($currentPoll);
-        header("Location: ../dashboard.php");
+        
+        //header("Location: ../dashboard.php");
     }
 }
