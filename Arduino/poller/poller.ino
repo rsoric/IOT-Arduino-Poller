@@ -68,7 +68,7 @@ void setup() {
 
     while(client.connected()) {
       if(client.available()){
-        String line = client.readStringUntil('\r');
+        String line = client.readStringUntil("END");
         Serial.println(line);
       }
     }
