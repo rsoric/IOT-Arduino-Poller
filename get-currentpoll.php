@@ -24,6 +24,7 @@ ini_set('display_errors', 'on');
 $result = $conn->query($sql);
 if ($result->num_rows > 0) {
    // output data of each row
+   echo "|";
    while($question = $result->fetch_assoc()) {
      //echo "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
      echo $question['questionText']."|";

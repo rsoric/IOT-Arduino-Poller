@@ -23,10 +23,7 @@ String GET_POLL_PATH_NAME   = "/get-currentpoll.php";
 RBD::Button buttonNext(12);
 RBD::Button buttonBack(14);
 
-String questions[50];
-int numQuestions = 0;
 String buffer = "";
-bool firstStringSplitMarkerRead = false;
 
 void setup() {
   Serial.begin(115200);
@@ -51,38 +48,54 @@ void setup() {
   lcd.clear();
   lcd.home();
 
-  WiFiClient client;
-  
-
-
-    // connect to web server on port 80:
-  if(client.connect(HOST_NAME, HTTP_PORT)) {
-    // if connected:
-    Serial.println("Connected to server");
-    // make a HTTP request:
-    // send HTTP header
-    client.println(HTTP_METHOD + " " + GET_POLL_PATH_NAME + " HTTP/1.1");
-    client.println("Host: " + String(HOST_NAME));
-    client.println("Connection: close");
-    client.println(); // end HTTP header
-
-    while(client.connected()) {
-      if(client.available()){
-        String line = client.readStringUntil('\n');
-        Serial.println(line);
-      }
-    }
-
-    // the server's disconnected, stop the client:
-    client.stop();
-    Serial.println();
-    Serial.println("disconnected");
-  } else {// if not connected:
-    Serial.println("connection failed");
-  }
   
 }
 
 void loop() {
 
+  if(buttonNext.onPressed())
+  {
+    getQuestions();
+  }
+
+}
+
+void getQuestions(){
+    WiFiClient client;
+  
+    // connect to web server on port 80:
+  if(client.connect(HOST_NAME, HTTP_PORT)) {
+    // if connected:
+    Serial.println(" ");
+    Serial.println("Connected to server");
+    // make a HTTP request:
+    // send HTTP header
+    /*
+    client.println(HTTP_METHOD + " " + GET_POLL_PATH_NAME + " HTTP/1.1");
+    client.println("Host: " + String(HOST_NAME));
+    client.println("Connection: close");
+    client.println(); // end HTTP header*/
+
+    client.println("POST /get-currentpoll.php HTTP/1.1");
+    client.println("Host: iotrisevi.herokuapp.com");
+    client.println("User-Agent: arduino-wifi");       
+    client.println("Connection: close");
+    client.println();
+
+    while(client.connected()) {
+      if(client.available()){
+        // read an incoming byte from the server and print it to serial monitor:
+        buffer = client.readString();
+        Serial.print(buffer);
+      }
+    }
+  
+
+    // the server's disconnected, stop the client:
+    client.stop();
+    Serial.println(" ");
+    Serial.println("disconnected");
+  } else {// if not connected:
+    Serial.println("connection failed");
+  }
 }
