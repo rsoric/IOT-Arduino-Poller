@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     if (isset($_POST['update'])) {
 
-        $_currentPoll->updateCurrentPoll($_POST["currentPollId"]));
+        $_currentPoll->updateCurrentPoll($_POST["currentPollId"]);
         header("Location: ../dashboard.php");
     }
 }
