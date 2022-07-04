@@ -20,7 +20,7 @@ char   HOST_NAME[] = "iotrisevi.herokuapp.com";
 String GET_POLL_PATH_NAME   = "/get-currentpoll.php";
 
 
-RBD::Button buttonForward(12);
+RBD::Button buttonNext(12);
 RBD::Button buttonBack(14);
 
 String questions[50];
@@ -51,7 +51,21 @@ void setup() {
   lcd.clear();
   delay(5000);
 
-  WiFiClient client;
+
+  lcd.home();
+}
+
+void loop() {
+
+  if(buttonNext.onPressed()) {
+    getQuestions();    
+    }
+  
+}
+
+void getQuestions(){
+    WiFiClient client;
+
   if (client.connect(HOST_NAME, HTTP_PORT)) {
     Serial.println("Connected to server");
     client.println(HTTP_METHOD + " " + GET_POLL_PATH_NAME + " HTTP/1.1");
@@ -66,14 +80,11 @@ void setup() {
         Serial.print(c);
       }
     }
+    
+    client.stop();
+    Serial.println();
+    Serial.println("disconnected");
+  } else {// if not connected:
+    Serial.println("connection failed");
   }
-  client.stop();
-
-  
-  
-  lcd.home();
-}
-
-void loop() {
-  // put your main code here, to run repeatedly:
 }
