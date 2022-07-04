@@ -64,6 +64,7 @@ void setup() {
         // read an incoming byte from the server and print it to serial monitor:
         char c = client.read();
         Serial.print(c);
+        if(c == '/n') Serial.print("NEWLINE");
       }
     }
   }
