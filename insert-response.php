@@ -1,10 +1,12 @@
 <?php
 
-if(isset($_GET["q1"],$_GET["q2"],$_GET["q3"])) {
+if(isset($_GET["values"])) {
    //$temperature = $_GET["temperature"]; // get temperature value from HTTP GET
-   $q1 = $_GET["q1"];
-   $q2 = $_GET["q2"];
-   $q3 = $_GET["q3"];
+   $q1 = $_GET["values"];
+
+   print_r($q1);
+
+   /*
    
    $servername = "eu-cdbr-west-02.cleardb.net";
    $username = "b8100c5581c24b";
@@ -18,6 +20,9 @@ if(isset($_GET["q1"],$_GET["q2"],$_GET["q3"])) {
       die("Connection failed: " . $conn->connect_error);
    }
 
+
+   
+
    $sql = "INSERT INTO responses (q1, q2, q3, timeOfPolling) VALUES ($q1, $q2, $q3,CURRENT_TIMESTAMP)";
 
    if ($conn->query($sql) === TRUE) {
@@ -29,6 +34,6 @@ if(isset($_GET["q1"],$_GET["q2"],$_GET["q3"])) {
    $conn->close();
 } else {
    echo "Responses are not set";
+}*/
 }
 ?>
-
