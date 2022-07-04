@@ -16,6 +16,6 @@
             $_questions->insertQuestion($question_sanitized,$insertedPollID);
         }
 
-        header("Location: ../dashboard_add_poll.php");
+        header("Location: ../dashboard_add_poll.php?AddSuccess");
     }
 

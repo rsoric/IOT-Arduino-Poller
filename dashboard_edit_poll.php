@@ -8,6 +8,10 @@ include_once "Backend/polls.php";
 
     <br>
 
+    <?php
+    if (!isset($_GET['PollID'])) {
+    ?>
+
     <h3>Select poll:</h3>
 
     <form action="Backend/selectPollToEdit.php" method="POST">
@@ -34,6 +38,11 @@ include_once "Backend/polls.php";
     </form>
 
     <?php
+    }
+
+    ?>
+
+    <?php
     if (isset($_GET['PollID'])) {
         $id =  $_GET['PollID'];
         $pollName = "";
@@ -42,8 +51,6 @@ include_once "Backend/polls.php";
             $pollName = $poll['pollName'];
         }
     ?>
-
-        <br>
 
         <h3>Editing <?= $pollName ?></h3>
 
@@ -156,5 +163,37 @@ include_once "Backend/polls.php";
         $(this).closest('#inputQuestionRow').children().children("#questionToDelete").attr('value','true');
     });
 </script>
+
+<?php
+if (isset($_GET['UpdateSuccess'])) {
+
+?>
+<br>
+    <div class="row">
+        <div class="col-10">
+        <div class="alert alert-success" role="alert">
+            Poll updated successfully!
+        </div>
+        </div>
+
+        </row>
+
+    <?php } ?>
+
+    <?php
+if (isset($_GET['DeleteSuccess'])) {
+
+?>
+<br>
+    <div class="row">
+        <div class="col-10">
+        <div class="alert alert-success" role="alert">
+            Poll deleted successfully!
+        </div>
+        </div>
+
+        </row>
+
+    <?php } ?>
 
 <?php include "dashboard_footer.php"; ?>

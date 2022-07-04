@@ -1,6 +1,6 @@
-<?php 
+<?php
 include "dashboard_header.php";
-include_once "Backend/polls_add.php"; 
+include_once "Backend/polls_add.php";
 ?>
 
 <div class="container-fluid dashboard-content">
@@ -40,25 +40,41 @@ include_once "Backend/polls_add.php";
 
 </div>
 
-<script type="text/javascript">
-    // add row
-    $("#addQuestion").click(function() {
-        var html = '';
-        html += '<div id="inputQuestionRow">';
-        html += '<div class="input-group mb-3">';
-        html += '<input type="text" name="questions[]" class="form-control m-input" placeholder="Question text" autocomplete="off" maxlength="16">';
-        html += '<div class="input-group-append">';
-        html += '<button id="removeQuestion" type="button" class="btn btn-danger">Remove</button>';
-        html += '</div>';
-        html += '</div>';
+<?php
+if (isset($_GET['AddSuccess'])) {
 
-        $('#inputQuestionRow').append(html);
-    });
+?>
+<br>
+    <div class="row">
+        <div class="col-10">
+        <div class="alert alert-success" role="alert">
+            Poll created successfully!
+        </div>
+        </div>
 
-    // remove row
-    $(document).on('click', '#removeQuestion', function() {
-        $(this).closest('#inputQuestionRow').remove();
-    });
-</script>
+        </row>
 
-<?php include "dashboard_footer.php"; ?>
+    <?php } ?>
+
+    <script type="text/javascript">
+        // add row
+        $("#addQuestion").click(function() {
+            var html = '';
+            html += '<div id="inputQuestionRow">';
+            html += '<div class="input-group mb-3">';
+            html += '<input type="text" name="questions[]" class="form-control m-input" placeholder="Question text" autocomplete="off" maxlength="16">';
+            html += '<div class="input-group-append">';
+            html += '<button id="removeQuestion" type="button" class="btn btn-danger">Remove</button>';
+            html += '</div>';
+            html += '</div>';
+
+            $('#inputQuestionRow').append(html);
+        });
+
+        // remove row
+        $(document).on('click', '#removeQuestion', function() {
+            $(this).closest('#inputQuestionRow').remove();
+        });
+    </script>
+
+    <?php include "dashboard_footer.php"; ?>

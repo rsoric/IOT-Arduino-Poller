@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             }
         }
 
-        header("Location: ../dashboard_edit_poll.php");
+        header("Location: ../dashboard_edit_poll.php?UpdateSuccess");
         
     }
     if (isset($_POST['delete'])){
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         echo("</pre>");
 
         $_polls->deletePoll($pollId);
-        header("Location: ../dashboard_edit_poll.php");
+        header("Location: ../dashboard_edit_poll.php?DeleteSuccess");
     }
  
 }
