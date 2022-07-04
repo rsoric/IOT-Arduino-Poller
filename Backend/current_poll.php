@@ -55,8 +55,8 @@ class CurrentPoll
         );
 
         $sql = <<<EOSQL
-            UPDATE currentPoll 
-            SET currentPollId = (:pollId)
+            UPDATE $this->_tableName 
+            SET currentPollId = :pollId
             WHERE entryID = 1234;
         EOSQL;
 
