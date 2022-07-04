@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         header("Location: ../dashboard_edit_poll.php");
         
     }
-    else if (isset($_POST['delete'])){
+    if (isset($_POST['delete'])){
         echo("<pre>");
         print_r($_REQUEST);
         echo("</pre>");
