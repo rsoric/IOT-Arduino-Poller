@@ -45,7 +45,9 @@ $result = $conn->query($sql);
 
 echo "<table>
 <tr>
+<th>Question</th>
 <th>Value</th>
+<th>Timestamp</th>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
   echo "<tr>";
