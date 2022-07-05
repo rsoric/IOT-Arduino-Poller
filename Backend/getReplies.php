@@ -59,5 +59,8 @@ while($row = mysqli_fetch_array($result)) {
 echo "</table>";
 $conn->close();
 ?>
+
+<br>
+
 </body>
 </html>
