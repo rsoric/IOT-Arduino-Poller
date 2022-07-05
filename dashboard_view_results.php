@@ -46,7 +46,7 @@ function showReplies(poll) {
         <div class="col-6">
                 <div class="input-group">
                     <select class="custom-select" onchange="showReplies(this.value)">
-                        <option value="">Select a poll:</option>
+                        <option value="">---</option>
                         <?php $polls = $_polls->getDBdata();
                         while ($poll = $polls->fetch()) : ?>
                             <option value="<?= htmlspecialchars($poll['pollId']) ?>"><?= htmlspecialchars($poll['pollName']) ?></option>
