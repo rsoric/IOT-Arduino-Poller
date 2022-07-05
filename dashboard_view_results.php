@@ -33,7 +33,7 @@ $(document).ready(function(){
 function loadreplies(){
     if(!(pollID == ""))
     {
-        $("#srepliesListed").load("Backend/getReplies.php?q=" + pollID);
+        $("#repliesListed").load("Backend/getReplies.php?q=" + pollID);
         setTimeout(loadreplies, 2000);
     }
 }
