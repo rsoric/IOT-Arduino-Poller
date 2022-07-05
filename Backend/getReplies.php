@@ -32,9 +32,10 @@ if ($conn->connect_error) {
    die("Connection failed: " . $conn->connect_error);
 }
 
-$sql="SELECT * FROM question_replies 
-INNER JOIN poll_instances
-ON question_replies.pollInstanceId = poll_instances.pollInstanceId
+$sql="SELECT q.questionText, qr.value, p.timestamp
+FROM question_replies qr
+LEFT JOIN poll_instances p ON qr.pollInstanceId = p.pollInstanceId
+LEFT JOIN questions q ON qr.questionId = q.questionId
 WHERE poll_instances.pollId = '".$q."'";
 
 error_reporting(E_ALL);
@@ -48,11 +49,13 @@ echo "<table>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
   echo "<tr>";
+  echo "<td>" . $row['questionText'] . "</td>";
   echo "<td>" . $row['value'] . "</td>";
+  echo "<td>" . $row['timestamp'] . "</td>";
   echo "</tr>";
 }
 echo "</table>";
-mysqli_close($con);
+$conn->close();
 ?>
 </body>
 </html>
