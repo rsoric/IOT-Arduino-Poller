@@ -48,7 +48,7 @@ echo "<table>
 </tr>";
 while($row = mysqli_fetch_array($result)) {
   echo "<tr>";
-  echo "<td>" . $row['Value'] . "</td>";
+  echo "<td>" . $row['value'] . "</td>";
   echo "</tr>";
 }
 echo "</table>";
