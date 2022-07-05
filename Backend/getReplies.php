@@ -33,9 +33,9 @@ if ($conn->connect_error) {
 }
 
 $sql="SELECT * FROM question_replies 
-INNER JOIN polls
-ON question_replies.pollId = polls.pollId
-WHERE polls.pollId = '".$q."'";
+INNER JOIN poll_instances
+ON question_replies.pollInstanceId = poll_instances.pollInstanceId
+WHERE poll_instances.pollId = '".$q."'";
 
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');

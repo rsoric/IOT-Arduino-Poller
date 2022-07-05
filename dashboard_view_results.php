@@ -69,4 +69,5 @@ function showReplies(poll) {
 
 <!-- Create a div where the graph will take place -->
 
+
 <?php include "dashboard_footer.php"; ?>
