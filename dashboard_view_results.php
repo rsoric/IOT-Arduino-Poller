@@ -1,4 +1,7 @@
-<?php include "dashboard_header.php"; ?>
+<?php 
+include "dashboard_header.php"; 
+include_once "Backend/polls.php";
+?>
 
 <script src="https://d3js.org/d3.v4.js"></script>
 
@@ -6,6 +9,10 @@
     <h1>Poll results:</h1>
 
     <br>
+
+    <?php
+    if (!isset($_GET['PollID'])) {
+    ?>
     <!--
 <div class="row">
     <div class="col-6">
@@ -17,22 +24,28 @@
 </div>-->
 
     <p>Choose a poll:</p>
+    <form action="Backend/selectPollToEdit.php" method="POST">
     <div class="row">
         <div class="col-6">
-            <form>
                 <div class="input-group">
-                    <select class="custom-select" id="inputGroupSelect04">
-                        <option value="1">Poll 1</option>
-                        <option value="2">Poll 2</option>
-                        <option value="3">Poll 3</option>
+                    <select class="custom-select" id="inputGroupSelect04" name="selectedPollToEdit">
+                        <?php $polls = $_polls->getDBdata();
+                        while ($poll = $polls->fetch()) : ?>
+                            <option value="<?= htmlspecialchars($poll['pollId']) ?>"><?= htmlspecialchars($poll['pollName']) ?></option>
+                        <?php endwhile; ?>
                     </select>
                     <div class="input-group-append">
                         <button class="btn btn-outline-secondary" type="submit">Submit</button>
                     </div>
                 </div>
-            </form>
         </div>
     </div>
+    </form>
+
+    <?php
+    }  
+
+    ?>
 
 </div>
 
