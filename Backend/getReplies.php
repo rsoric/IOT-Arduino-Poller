@@ -36,7 +36,7 @@ $sql="SELECT q.questionText, qr.value, p.timestamp
 FROM question_replies qr
 LEFT JOIN poll_instances p ON qr.pollInstanceId = p.pollInstanceId
 LEFT JOIN questions q ON qr.questionId = q.questionId
-WHERE poll_instances.pollId = '".$q."'";
+WHERE p.pollId = '".$q."'";
 
 error_reporting(E_ALL);
 ini_set('display_errors', 'on');
