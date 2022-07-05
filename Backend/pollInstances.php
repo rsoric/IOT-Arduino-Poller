@@ -51,10 +51,8 @@ class PollInstances
 
     public function insertPollInstance($pollId)
     {
-        $pollOfWhichInstance = $pollId->fetch();
-
         $pollInstance = array(
-            ':pollId' => $pollOfWhichInstance['pollId']
+            ':pollId' => $pollId
         );
 
         $sql = <<<EOSQL

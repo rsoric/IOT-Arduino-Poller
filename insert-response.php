@@ -21,7 +21,7 @@ if(isset($_GET["values"],$_GET["ID"]))
 
    //$values = array_pop(explode("|", $values));
 
-   $insertedPollInstanceID = $_pollInstances->insertPollInstance($_currentPoll->getIDOfCurrentPoll());
+   $insertedPollInstanceID = $_pollInstances->insertPollInstance($currentPollID);
 
    $pollQuestions = $_polls->getPollQuestions($currentPollID);
 
