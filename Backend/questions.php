@@ -75,6 +75,7 @@ class Questions
     public function deleteQuestion($questionId)
     {
         $sql = <<<EOSQL
+            DELETE FROM question_replies WHERE questionId = $questionId;
             DELETE FROM $this->_tableName WHERE questionId = $questionId;
         EOSQL;
 
