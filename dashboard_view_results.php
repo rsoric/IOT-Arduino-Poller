@@ -5,7 +5,12 @@ include_once "Backend/polls.php";
 
 <script src="https://d3js.org/d3.v4.js"></script>
 <script>
+
+ var pollID = "";   
+
 function showReplies(poll) {
+
+  pollID = poll;  
   if (poll == "") {
     document.getElementById("repliesListed").innerHTML = "";
     return;
@@ -20,6 +25,19 @@ function showReplies(poll) {
     xmlhttp.send();
   }
 }
+
+$(document).ready(function(){    
+    loadreplies();
+});
+
+function loadreplies(){
+    if(!(pollID == ""))
+    {
+        $("#srepliesListed").load("Backend/getReplies.php?q=" + pollID);
+        setTimeout(loadreplies, 2000);
+    }
+}
+
 </script>
 
 <div class="container-fluid dashboard-content">
