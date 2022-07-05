@@ -52,6 +52,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 return; 
             }
         }
+
+        ini_set('display_startup_errors', 1);
+        ini_set('display_errors', 1);
+        error_reporting(-1);
+
         $_polls->deletePoll($pollId);
         header("Location: ../dashboard_edit_poll.php?DeleteSuccess");
     }
